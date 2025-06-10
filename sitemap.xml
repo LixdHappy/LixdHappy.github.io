@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.gbfun.cc/categories/index.html</loc>
+    <loc>https://blog.gbfun.cc/about/index.html</loc>
     
     <lastmod>2025-06-10</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://blog.gbfun.cc/about/index.html</loc>
+    <loc>https://blog.gbfun.cc/categories/index.html</loc>
     
     <lastmod>2025-06-10</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://blog.gbfun.cc/2025/06/10/hello-world/</loc>
+    <loc>https://blog.gbfun.cc/2022/05/28/hello-world/</loc>
     
     <lastmod>2025-06-09</lastmod>
     

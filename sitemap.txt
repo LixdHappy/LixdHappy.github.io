@@ -1,5 +1,5 @@
-https://blog.gbfun.cc/categories/index.html
 https://blog.gbfun.cc/about/index.html
+https://blog.gbfun.cc/categories/index.html
 https://blog.gbfun.cc/comment/index.html
 https://blog.gbfun.cc/shuoshuo/index.html
 https://blog.gbfun.cc/movies/index.html
@@ -8,5 +8,5 @@ https://blog.gbfun.cc/music/index.html
 https://blog.gbfun.cc/archives/index.html
 https://blog.gbfun.cc/tags/index.html
 https://blog.gbfun.cc/link/index.html
-https://blog.gbfun.cc/2025/06/10/hello-world/
+https://blog.gbfun.cc/2022/05/28/hello-world/
 https://blog.gbfun.cc/
