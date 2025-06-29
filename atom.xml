@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="./rss/atom.xsl" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>GB 的记事簿</title>
+  <icon>http://blog.gbfun.cc/img/%E7%88%86%E7%B1%B3%E8%8A%B1.svg</icon>
+  <subtitle>热爱生活</subtitle>
+  <link href="http://blog.gbfun.cc/atom.xml" rel="self"/>
+  
+  <link href="http://blog.gbfun.cc/"/>
+  <updated>2025-06-29T16:57:14.783Z</updated>
+  <id>http://blog.gbfun.cc/</id>
+  
+  <author>
+    <name>LixdHappy</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何在安知鱼主题中加入无聊湾</title>
+    <link href="http://blog.gbfun.cc/posts/cd9cbdaa.html"/>
+    <id>http://blog.gbfun.cc/posts/cd9cbdaa.html</id>
+    <published>2025-06-29T06:34:37.000Z</published>
+    <updated>2025-06-29T16:57:14.783Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="http://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="http://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="anzhiyu" scheme="http://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+    <category term="主题修改" scheme="http://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是Markdown 以及怎么写才是更好的排版.</title>
+    <link href="http://blog.gbfun.cc/posts/edc6e88.html"/>
+    <id>http://blog.gbfun.cc/posts/edc6e88.html</id>
+    <published>2025-06-21T03:17:48.000Z</published>
+    <updated>2025-06-29T16:57:14.783Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note success</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="http://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="基础认识" scheme="http://blog.gbfun.cc/tags/%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/"/>
+    
+    <category term="Hexo" scheme="http://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="文章排版" scheme="http://blog.gbfun.cc/tags/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88/"/>
+    
+    <category term="转载或翻译" scheme="http://blog.gbfun.cc/tags/%E8%BD%AC%E8%BD%BD%E6%88%96%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+</feed>

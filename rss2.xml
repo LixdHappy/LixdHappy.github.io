@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="./rss/rss2.xsl" ?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GB 的记事簿</title>
+    <link>http://blog.gbfun.cc/</link>
+    
+    <image>
+      <url>http://blog.gbfun.cc/img/%E7%88%86%E7%B1%B3%E8%8A%B1.svg</url>
+      <title>GB 的记事簿</title>
+      <link>http://blog.gbfun.cc/</link>
+    </image>
+    
+    <atom:link href="http://blog.gbfun.cc/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Sun, 29 Jun 2025 16:57:14 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>如何在安知鱼主题中加入无聊湾</title>
+      <link>http://blog.gbfun.cc/posts/cd9cbdaa.html</link>
+      <guid>http://blog.gbfun.cc/posts/cd9cbdaa.html</guid>
+      <pubDate>Sun, 29 Jun 2025 06:34:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="http://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="http://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      <category domain="http://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      
+      <comments>http://blog.gbfun.cc/posts/cd9cbdaa.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>什么是Markdown 以及怎么写才是更好的排版.</title>
+      <link>http://blog.gbfun.cc/posts/edc6e88.html</link>
+      <guid>http://blog.gbfun.cc/posts/edc6e88.html</guid>
+      <pubDate>Sat, 21 Jun 2025 03:17:48 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note success</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="http://blog.gbfun.cc/tags/%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/">基础认识</category>
+      
+      <category domain="http://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="http://blog.gbfun.cc/tags/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88/">文章排版</category>
+      
+      <category domain="http://blog.gbfun.cc/tags/%E8%BD%AC%E8%BD%BD%E6%88%96%E7%BF%BB%E8%AF%91/">转载或翻译</category>
+      
+      
+      <comments>http://blog.gbfun.cc/posts/edc6e88.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
