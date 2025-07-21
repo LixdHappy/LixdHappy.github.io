@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>村中恬居有感</title>
+      <link href="/posts/86ed40d5.html"/>
+      <url>/posts/86ed40d5.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Mon Jul 21 2025 14:55:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[我的回想，或许我的乡村生活可以在此告一段落了–虽然在眼下的日子来说，还有些事情要处理，我还不能离开，所以我更偏向于对此的一些小牢骚。肉体仍犹在，精神魂已离。夏日的黄昏，迟迟不肯收敛它灼人的气息，广西的夏日总是出奇的令人好感满分（确信），老房子默默矗立，尽心尽力着，它仿似诉说着为了我们遮风避雨三十年，我摸着墙沿，告诉了它–“放心吧老朋友，我会照顾好你的”，虽说着要照顾好它，我们却无从下手，夏广的雨季，它无声哭泣，它已千疮百孔，花了一周，我们缝缝补补，好巧不巧，又赶来了“韦帕”的席卷。我希望我刷的两层防水能扛住这个台风。（没来得及补完）于我而言，任何事情，如果只是了解其表面或许我会笑呵呵的谈笑而过，但是事情发生在自己身上，我只能以局中人的角度来看了，谁不想谈笑而过，谁不想成为能够安慰别人，听其诉苦，笑言而过的幸福主角，谁都不想成为悲伤故事的主角。我的故事是，好赌的舅，活在白日梦的表姐，乱玩来的娃，这就是一段故事，噢，对了，还有一个倔强的妈。假如说单单带娃能带给我快乐，那我万分支持，但那只限于家教好的娃。三岁，一个黄金的年龄，会说话会走路，心眼子不够多，好骗，带的好，具有足够的三观教导，小孩将会万分有趣。家门不幸，小孩并不够优秀，虽然说并不是我的娃，但是我希望能带给她正确的引导。很可惜，我在这位三岁的小朋友身上看不出任何阳光的一面，挑食，会耍心机（可能这对评价小孩子来说言语有些重了），完全看不出这是三岁的小孩该有的心计，吃饭无肉宁可不吃，责备则轱辘双眼挑选幸运嘉宾哄她，有人哄则放声哭泣，势必要让她得到万分关注，我不理解怎么会有这样心机的小孩，再说，也与这一个家的契合度近乎百分百，人家爷爷是这个样子，妈妈是这个样子，她也是这个样子，一家子的食肉主义者，更绝的是，连狗也是肉食主义者，无肉不吃，果然“物与类聚，人以群分”。我不明白为什么在外生活三年的小孩，回了老家却能与这个群体高度契合。或许她的妈妈就是这样子的人，我不禁思考，疑惑不解，再到豁朗开朗。这就是“不是一家人不进一家门”，老祖宗传下来的话不无道理。我承认我的嘴碎，可是，我想给自己找出一份属于自己的天地，远离喧嚣，或许还能遇见与我相性的人，这不就是我写博客的初衷吗？本着生活琐碎，给自己一个发泄的平台，也不想在累着生活的同时，回到家还需要操劳小孩操劳生活，我追求的生活方式也希望能更加精彩，而不是像吃了睡睡了吃，打通宵麻将，干涉教育小孩，以及一个无作为的母亲（我的表姐）。大抵我就是这样一类人，喜欢农村的恬适，但是不喜欢农村人的窃言（非歧视），我不喜欢这样的氛围，如果只是生活大抵我会享受着，但是一想到生活有着这样的家庭我又会懊恼。我今年23岁，目前升本待读，我也没有读书的天资，不然也不会只考上专科，专注力自古以来的缺乏，目前就读机器人专业，大抵以后是做调试，进厂的料。我希望能跳出这个圈子，因为对理科擅长不来，也有可能是我根本就没这类敏觉。家庭也是琐碎，家庭只在这一类上面有人脉，但是又给我不靠谱的感觉（毕竟我三弟已经被所谓的亲戚坑了），我想以后努力自己创业，先攒够资金💪。加油吧！]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> 碎碎语 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>本地翻译模型部署(个人随笔)</title>
+      <link href="/posts/9fcec3f.html"/>
+      <url>/posts/9fcec3f.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Sat Jul 12 2025 05:18:47 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]一、硬件准备与系统配置[链接]1.硬件要求检测[链接]显存检测方法：win+r→输入dxdiag右键桌面→显示设置→高级显示器设置→显示器属性任务管理器→性能→gpu最低配置建议：共享显存≥8gb运行内存≥16gbintelarc&#x2f;irisxe系列显卡(更符合本人使用轻薄本的情景)[链接]2.驱动更新下载地址：[链接]安装注意事项：[代码块][代码块][链接]3.模型选择建议模型名称显存要求适用场景性能表现deepseek-r1:8b8gb日常问答&#x2f;文本处理⭐⭐⭐⭐deepseek-coder-v2:16b16gb编程&#x2f;翻译⭐⭐⭐⭐⭐nomic-embed-text6gb浏览器增强⭐⭐⭐💡选择建议：日常问答推荐deepseek-r1:8b，翻译需求选择deepseek-coder-v2:16b实际体验下来笔记本能飞8b模型也是勉强[链接]二、ollama安装与配置安装[链接],以下内容属于官网版ollama的安装指南内容,下载优化版可以省略以下步骤.[链接]1.自定义安装路径操作步骤：创建目标目录（如d:\apps\ollama\）终端执行安装命令：powershell[代码块][代码块][链接]2.验证安装powershell[代码块][代码块][链接]3.模型下载与管理powershell[代码块][代码块][链接]三、浏览器集成方案[链接]1.pageassist插件配置安装[链接],[链接]打开扩展→rag设置→文本嵌入模型→nomic-embed-text下载依赖模型：powershell[代码块][代码块][链接]2.沉浸式翻译设置api配置：[代码块][代码块]实际体验下来,qwen3和qwen2.5也挺适合翻译跨域设置：系统操作windows控制面板→系统属性→环境变量→新建：ollama_host=0.0.0.0ollama_origins=*macos终端执行：launchctlsetenvollama_origins&quot;*&quot;linux终端执行：ollama_origins=&quot;*&quot;ollamaserve[链接]四、常见问题解决[链接]1.性能优化技巧[链接]性能调优你可以尝试如下设置来进行性能调优：[链接][链接]环境变量sycl_pi_level_zero_use_immediate_commandlists环境变量sycl_pi_level_zero_use_immediate_commandlists用于控制是否使用immediatecommandlists将任务提交到gpu。你可以尝试将sycl_pi_level_zero_use_immediate_commandlists设为1或0以找到最佳性能配置。你可以通过如下步骤，在启动ollamaserve之前启用sycl_pi_level_zero_use_immediate_commandlists（如果ollamaserve已经在运行，请确保先将其停止）：对于windows用户：打开命令提示符，并通过cd/dpath\to\extracted\folder命令进入解压后的文件夹在命令提示符中设置setsycl_pi_level_zero_use_immediate_commandlists=1通过运行start-ollama.bat启动ollamaserve对于linux用户：在终端中输入指令cdpath/to/extracted/folder进入解压后的文件夹在终端中设置exportsycl_pi_level_zero_use_immediate_commandlists=1通过运行./start-ollama.sh启动ollamaserve[链接]节省vram你可以通过在启动ollamaserve之前设置环境变量ollama_num_parallel为1来节约显存，步骤如下（如果ollamaserve已经在运行，请确保先将其停止）：对于windows用户：打开命令提示符，并通过cd/dpath\to\extracted\folder命令进入解压后的文件夹在命令提示符中设置setollama_num_parallel=1通过运行start-ollama.bat启动ollamaserve对于linux用户：在终端中输入指令cdpath/to/extracted/folder进入解压后的文件夹在终端中设置exportollama_num_parallel=1通过运行./start-ollama.sh启动ollamaserve对于moe模型（比如qwen3:30b），你可以通过在启动ollamaserve之前设置环境变量ollama_set_ot把experts移到cpu运行上来节约显存（如果ollamaserve已经在运行，请确保先将其停止）：对于windows用户：打开命令提示符，并通过cd/dpath\to\extracted\folder命令进入解压后的文件夹在命令提示符中设置setollama_set_ot=&quot;exps=cpu&quot;把所有的experts放在cpu上；也可以通过设置正则表达式，如setollama_set_ot=&quot;(2[4-9]|[3-9][0-9])\.ffn_.*_exps\.=cpu&quot;把24到99层的experts放到cpu上通过运行start-ollama.bat启动ollamaserve对于linux用户：在终端中输入指令cdpath/to/extracted/folder进入解压后的文件夹在终端中设置exportollama_set_ot=&quot;exps=cpu&quot;把所有的experts放在cpu上；也可以通过设置正则表达式，如exportollama_set_ot=&quot;(2[4-9]|[3-9][0-9])\.ffn_.*_exps\.=cpu&quot;把24到99层的experts放到cpu上通过运行./start-ollama.sh启动ollamaserve[链接]2.模型使用建议[代码块][链接]3.资源获取[链接][链接][链接]]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 科技 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>星露谷游玩使用的Mod</title>
+      <link href="/posts/a489953f.html"/>
+      <url>/posts/a489953f.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Fri Jul 11 2025 04:18:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]星露谷物语mod备份29713模组管理器128328smapi5098左下角菜单小齿轮239npc位置[链接]github下载541查找一切(有汉化)8897可见鱼(有汉化)1232小马减肥3109自动门15223穿过作物20391跳过钓鱼(有汉化)518处处开箱(有汉化)963骷髅矿洞电梯27489邮件发礼(有汉化)29035自动吃饭29058自动切斧29391自动收割29611升级工具可借临时工具20943移动一切22163共享经验21001礼物助手8329怪物血条6338模组更新器16233简洁社交26194快速存档169时间速度12158头像铭牌22539资源存储3518时显修改(有汉化)7403坐着休息22751经验条样式修改10384快速存箱(有汉化)34257批量破水晶7500处处唤马]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何移植Solitude主题中的十年之约进度条至anzhiyu主题</title>
+      <link href="/posts/5498433.html"/>
+      <url>/posts/5498433.html</url>
+      <cover>https://blog-image-1302787555.cos.ap-guangzhou.myqcloud.com//img%25E5%25AD%25A6%25E9%2599%25A2-%25E6%2599%25A8.webp</cover>
+      <date>Sun Jun 29 2025 17:04:01 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。[链接]前言在逛[链接]大佬的博客时,本着偷窥人家隐私为目的,去看看大佬的设计时发现之前用着solitude主题时候一个设计比较美丽的进度条–十年之约[图片]随后我也想着要不把这个进度条搬过来吧,就安置在原solitude主题的模块位置–关于,说干就干,之前琢磨这么久的主题不就是为了偷代码学习嘛[链接]修改以下内容涉及的文件about.pug(重点备份)tenyear.pug(新建)tenyear.styl(新建)首先需要决定十年之约模块的运作方式,路径anzhiyu&gt;layout&gt;includes&gt;widget&gt;tenyear.pug,新建tenyear.pug文件tenyear.pug的内容如下:[代码块][代码块]决定完模块运作方式还需要确定它的样子.路径anzhiyu&gt;source&gt;css&gt;_page&gt;tenyear.styl下新建tenyear.styltenyear.styl内容如下:[代码块][代码块]其中.process.background-color是进度条前半的颜色,即达到进度.我在此处修改为了#f25d8e粉红色,与打赏按钮的颜色一致..tenyear-timeline.background-color为进度条后半的颜色,即剩余进度.我在此处修改为了var(--anzhiyu-background)安知鱼的背景颜色,主要是为了适配暗色模式,如果单纯的设计为白色,会导致暗色模式下进度条后半为白色,瞎眼剩余可修改样式可以自行琢磨,基本只用修改这两处,颜色适配方面,因为我用不到其他的颜色修改与字体大小,所以我将颜色原var(--efu--color--)修改为了var(--anzhiyu--color),主要是efu的颜色未定义,需要做出修改,加之我的技术力也不允许我进行修改.路径anzhiyu&gt;layout&gt;includes&gt;page&gt;about.pug需要做出三处修改.内容修改如下:顶部判定条件加入,[代码块][代码块]添加tenyear模块,这里我选择放置在打赏模块与音乐喜好模块之间,[代码块][代码块]进度函数,[代码块][代码块]4.模块开关,路径source&gt;_data&gt;about.yml添加,[代码块][代码块]我选择放置在打赏模块之上.最后三连即可见.]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何在安知鱼主题中加入无聊湾</title>
+      <link href="/posts/cd9cbdaa.html"/>
+      <url>/posts/cd9cbdaa.html</url>
+      <cover>https://blog-image-1302787555.cos.ap-guangzhou.myqcloud.com//img%25E5%25A6%2582%25E4%25BD%2595%25E5%258A%25A0%25E5%2585%25A5%25E6%2597%25A0%25E8%2581%258A%25E6%25B9%25BE.webp</cover>
+      <date>Sun Jun 29 2025 06:34:37 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。[链接]前言轮到我来水一篇大文章,窃喜有一天无聊了起来,看见大家的博客里面添加有一些有趣的元素,其中就以无聊湾最为醒目,有的放置在侧边栏,也有的放置在博客页脚[图片]看起来是个十分无趣(有趣)的项目,而我的安知鱼主题中基本所有的元素塞满了,所以我想了想放在博客底部是否可行,不过本人没什么代码基础,只能借助源代码怎么写的,就跟着怎么仿照元素搓一个开关出来,代码写的不好看,见谅.[图片][链接]修改首先,得加入[链接]获取统计api(在我看来也是一个统计作用),找到themes&gt;anzhiyu&gt;layout&gt;includes&gt;footer.pug[代码块][代码块]随后找到_config.anzhiyu.yml进行添加代码缺失的元素[代码块][代码块]最后执行三连享受无聊吧🥱]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>什么是Markdown 以及怎么写才是更好的排版.</title>
+      <link href="/posts/edc6e88.html"/>
+      <url>/posts/edc6e88.html</url>
+      <cover>https://blog-image-1302787555.cos.ap-guangzhou.myqcloud.com//img1.Markdown.jpg</cover>
+      <date>Sat Jun 21 2025 03:17:48 GMT+0000</date>
+      
+        <content type="html"><![CDATA[为了方便自己在写博文的时候参考,特地为自己安排了markdown语法的教程一环🤐,翻译了一下文档,便于国人理解,虽然单词都挺基础也罢[链接]markdown入门基础[链接]markdown是什么markdown是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。markdown由johngruber于2004年创建，如今已成为世界上最受欢迎的标记语言之一。专注于文字内容；纯文本，易读易写，可以方便地纳入版本控制；语法简单，没有什么学习成本，能轻松在码字的同时做出美观大方的排版。使用markdown与使用word类编辑器不同。在word之类的应用程序中，单击按钮以设置单词和短语的格式，并且，更改立即可见。而markdown与此不同，当你创建markdown格式的文件时，可以在文本中添加markdown语法，以指示哪些单词和短语看起来应该有所不同。例如，要表示标题，只须在短语前面添加一个井号即可（例如，#headingone）。或者要加粗一个短语，只须在短语前后各加两个星号即可（例如，**thistextisbold**）。可能需要一段时间才能习惯在文本中看到markdown语法，尤其是如果你已习惯了所见即所得的应用程序。以下屏幕截展示了markdown文件在[notepad++文本编辑器]中显示的效果。[图片]你可以使用文本编辑器为纯文本文件添加markdown格式的元素。或者，你也可以安装针对macos、windows、linux、ios和android操作系统的markdown应用程序。或者还可以使用一些基于web的应用程序用于markdown编写。依赖于你所使用的应用程序，你可能无法实时预览格式化的文档。但是没关系。[链接]，markdown的语法被设计为可读性强且不显眼，因此即使markdown文件中的文本未经过渲染也易于阅读。markdown语法的首要设计目标是尽可能易读。基于这个目标，markdown格式的文档能够以纯文本形式原样发布，而不会看起来像被填满了标签或格式化指令。[链接]为什么要使用markdown？当你可以通过按下界面中的按钮来设置文本格式时，为什么还要使用markdown来书写呢？使用markdown而不是word类编辑器的原因有：markdown无处不在。stackoverflow、csdn、掘金、简书、gitbook、有道云笔记、v2ex、光谷社区等。主流的代码托管平台，如github、gitlab、bitbucket、coding、gitee等等，都支持markdown语法，很多开源项目的readme、开发文档、帮助文档、wiki等都用markdown写作。markdown是纯文本可移植的。几乎可以使用任何应用程序打开包含markdown格式的文本文件。如果你不喜欢当前使用的markdown应用程序了，则可以将markdown文件导入另一个markdown应用程序中。这与microsoftword等文字处理应用程序形成了鲜明的对比，microsoftword将你的内容锁定在专有文件格式中。markdown是独立于平台的。你可以在运行任何操作系统的任何设备上创建markdown格式的文本。markdown能适应未来的变化。即使你正在使用的应用程序将来会在某个时候不能使用了，你仍然可以使用文本编辑器读取markdown格式的文本。当涉及需要无限期保存的书籍、大学论文和其他里程碑式的文件时，这是一个重要的考虑因素。[链接]工欲善其事，必先利其器markdown入门的最佳方式就是多使用它。由于有大量免费工具的存在，上手markdown是很方便的。比较遗憾的一点是各平台可能采用不同语言实现的markdown解析引擎，或采用同一解析引擎的不同版本，而且可能有不同程度的定制与扩展，这导致在不同平台上使用markdown写作时体验并不完全一致。不过幸好对于大家公认的一些标准语法，各家都是支持的。你甚至都不需要下载任何程序，就可以使用[链接]来编写markdown。进入其站点就可以开始在左侧窗格中书写了。渲染后的文档在右侧窗格预览。阅读本指南时，你可以打开[链接]。这样，你就可以一边学习markdown语法一边练习了。熟悉markdown之后，再选择一个顺手的markdown的应用程序更推荐入门的typora,使用体验非常重要[链接]markdown语法速查表[链接]总览markdown速查表提供了所有markdown语法元素的基本解释。如果你想了解某些语法元素的更多信息，请参阅更详细的[链接]和[链接].[链接]基本语法这些是johngruber的原始设计文档中列出的元素。所有markdown应用程序都支持这些元素。元素markdown语法[链接]#h1##h2###h3[链接]**boldtext**[链接]*italicizedtext*[链接]&gt;blockquote[链接]1.firstitem2.seconditem3.thirditem[链接]-firstitem-seconditem-thirditem[链接]code[链接]---[链接][title](https://www.example.com)[链接]![alttext](image.jpg)[链接]扩展语法这些元素通过添加额外的功能扩展了基本语法。但是，并非所有markdown应用程序都支持这些元素。元素markdown语法[链接]&#96;[链接]&lt;/code&gt;&lt;br&gt;&lt;code&gt;&#123;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&quot;firstname&quot;:&quot;john&quot;,&lt;/code&gt;&lt;br&gt;&lt;code&gt;&quot;lastname&quot;:&quot;smith&quot;,&lt;/code&gt;&lt;br&gt;&lt;code&gt;&quot;age&quot;:25&lt;/code&gt;&lt;br&gt;&lt;code&gt;&#125;&lt;/code&gt;&lt;br&gt;&lt;code&gt;[链接]here’sasentencewithafootnote.[^1][^1]:thisisthefootnote.[链接]&#96;###mygreatheading]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 基础认识 </tag>
+            
+            <tag> 文章排版 </tag>
+            
+            <tag> 转载或翻译 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
