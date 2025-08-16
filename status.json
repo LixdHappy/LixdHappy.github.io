@@ -93,7 +93,7 @@
     },
     {
       "id": 800829167,
-      "friendly_name": "友链服���",
+      "friendly_name": "友链服务",
       "url": "https://fca.gbfun.cc",
       "type": 1,
       "sub_type": "",
@@ -126,5 +126,5 @@
       "create_datetime": 1751109664
     }
   ],
-  "updated_at": "2025-08-17 03:09:38"
+  "updated_at": "2025-08-17 03:34:09"
 }
