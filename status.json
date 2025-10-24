@@ -20,7 +20,7 @@
       "port": "",
       "interval": 300,
       "timeout": 30,
-      "status": 9,
+      "status": 2,
       "create_datetime": 1755993530
     },
     {
@@ -88,12 +88,12 @@
       "port": "",
       "interval": 300,
       "timeout": 30,
-      "status": 9,
+      "status": 2,
       "create_datetime": 1751129414
     },
     {
       "id": 800829089,
-      "friendly_name": "个人博客",
+      "friendly_name": "个���博客",
       "url": "https://blog.gbfun.cc/",
       "type": 1,
       "sub_type": "",
@@ -105,7 +105,7 @@
       "port": "",
       "interval": 300,
       "timeout": 30,
-      "status": 9,
+      "status": 2,
       "create_datetime": 1751107801
     },
     {
@@ -160,5 +160,5 @@
       "create_datetime": 1751109664
     }
   ],
-  "updated_at": "2025-10-24 09:12:55"
+  "updated_at": "2025-10-24 12:19:49"
 }
