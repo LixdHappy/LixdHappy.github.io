@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="./rss/atom.xsl" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>GB的记事簿</title>
+  <icon>https://blog.gbfun.cc/img/%E7%88%86%E7%B1%B3%E8%8A%B1.svg</icon>
+  <subtitle>热爱生活</subtitle>
+  <link href="https://blog.gbfun.cc/atom.xml" rel="self"/>
+  
+  <link href="https://blog.gbfun.cc/"/>
+  <updated>2025-12-13T17:21:39.473Z</updated>
+  <id>https://blog.gbfun.cc/</id>
+  
+  <author>
+    <name>LixdHappy</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>魔改即刻短文兼容Ech0</title>
+    <link href="https://blog.gbfun.cc/posts/56a1a68.html"/>
+    <id>https://blog.gbfun.cc/posts/56a1a68.html</id>
+    <published>2025-12-11T11:59:20.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文章页尾评论区计数模块修改</title>
+    <link href="https://blog.gbfun.cc/posts/8eee9317.html"/>
+    <id>https://blog.gbfun.cc/posts/8eee9317.html</id>
+    <published>2025-11-23T09:50:23.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文章页头评论数模块悬停逻辑修改</title>
+    <link href="https://blog.gbfun.cc/posts/397fd261.html"/>
+    <id>https://blog.gbfun.cc/posts/397fd261.html</id>
+    <published>2025-10-09T19:50:50.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>仿Heo部分元素添加卡片式信息外框</title>
+    <link href="https://blog.gbfun.cc/posts/e3515228.html"/>
+    <id>https://blog.gbfun.cc/posts/e3515228.html</id>
+    <published>2025-09-06T15:54:26.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>anzhiyu主题文章板块中关于原创与判定的实现逻辑问题</title>
+    <link href="https://blog.gbfun.cc/posts/6d59bdb1.html"/>
+    <id>https://blog.gbfun.cc/posts/6d59bdb1.html</id>
+    <published>2025-08-24T08:44:01.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安知鱼主题标签 Tag Plugins</title>
+    <link href="https://blog.gbfun.cc/posts/de7f0b92.html"/>
+    <id>https://blog.gbfun.cc/posts/de7f0b92.html</id>
+    <published>2025-08-24T04:20:44.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+    <summary type="html">添加大量外挂标签样式。</summary>
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="基础认识" scheme="https://blog.gbfun.cc/tags/%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/"/>
+    
+    <category term="文章排版" scheme="https://blog.gbfun.cc/tags/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88/"/>
+    
+    <category term="转载或翻译" scheme="https://blog.gbfun.cc/tags/%E8%BD%AC%E8%BD%BD%E6%88%96%E7%BF%BB%E8%AF%91/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+    <category term="Tag Plugins" scheme="https://blog.gbfun.cc/tags/Tag-Plugins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>借助云服务器搭建穿透服务</title>
+    <link href="https://blog.gbfun.cc/posts/34f45ae4.html"/>
+    <id>https://blog.gbfun.cc/posts/34f45ae4.html</id>
+    <published>2025-08-18T06:00:00.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;借助云服务器搭建穿透服务&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生活日常" scheme="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="游戏" scheme="https://blog.gbfun.cc/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+    <category term="笔记" scheme="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Minecraft" scheme="https://blog.gbfun.cc/tags/Minecraft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于插件端新人腐竹推荐的一些插件</title>
+    <link href="https://blog.gbfun.cc/posts/52088fd5.html"/>
+    <id>https://blog.gbfun.cc/posts/52088fd5.html</id>
+    <published>2025-08-18T06:00:00.000Z</published>
+    <updated>2025-12-13T17:21:39.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活日常" scheme="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="游戏" scheme="https://blog.gbfun.cc/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+    <category term="笔记" scheme="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Minecraft" scheme="https://blog.gbfun.cc/tags/Minecraft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于个人备案心得</title>
+    <link href="https://blog.gbfun.cc/posts/7a45d360.html"/>
+    <id>https://blog.gbfun.cc/posts/7a45d360.html</id>
+    <published>2025-07-31T15:55:00.000Z</published>
+    <updated>2025-12-13T17:21:39.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;为什么我要备案&quot;&gt;&lt;a href=&quot;#为什么我要备案&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活日常" scheme="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="备案" scheme="https://blog.gbfun.cc/tags/%E5%A4%87%E6%A1%88/"/>
+    
+    <category term="笔记" scheme="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="随笔" scheme="https://blog.gbfun.cc/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>本地翻译模型部署(个人随笔)</title>
+    <link href="https://blog.gbfun.cc/posts/9fcec3f.html"/>
+    <id>https://blog.gbfun.cc/posts/9fcec3f.html</id>
+    <published>2025-07-12T05:18:47.000Z</published>
+    <updated>2025-12-13T17:21:39.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、硬件准备与系统配置&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生活日常" scheme="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="科技" scheme="https://blog.gbfun.cc/tags/%E7%A7%91%E6%8A%80/"/>
+    
+    <category term="笔记" scheme="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="随笔" scheme="https://blog.gbfun.cc/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>星露谷游玩使用的Mod</title>
+    <link href="https://blog.gbfun.cc/posts/a489953f.html"/>
+    <id>https://blog.gbfun.cc/posts/a489953f.html</id>
+    <published>2025-07-11T04:18:00.000Z</published>
+    <updated>2025-12-13T17:21:39.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;星露谷物语-Mod-备份&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生活日常" scheme="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="游戏" scheme="https://blog.gbfun.cc/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+    <category term="笔记" scheme="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="随笔" scheme="https://blog.gbfun.cc/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何移植Solitude主题中的十年之约进度条至anzhiyu主题</title>
+    <link href="https://blog.gbfun.cc/posts/5498433.html"/>
+    <id>https://blog.gbfun.cc/posts/5498433.html</id>
+    <published>2025-06-29T17:04:01.000Z</published>
+    <updated>2025-12-13T17:21:39.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在安知鱼主题中加入无聊湾</title>
+    <link href="https://blog.gbfun.cc/posts/cd9cbdaa.html"/>
+    <id>https://blog.gbfun.cc/posts/cd9cbdaa.html</id>
+    <published>2025-06-29T06:34:37.000Z</published>
+    <updated>2025-12-13T17:21:39.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note blue</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="主题修改" scheme="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"/>
+    
+    <category term="anzhiyu" scheme="https://blog.gbfun.cc/tags/anzhiyu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是Markdown 以及怎么写才是更好的排版.</title>
+    <link href="https://blog.gbfun.cc/posts/edc6e88.html"/>
+    <id>https://blog.gbfun.cc/posts/edc6e88.html</id>
+    <published>2025-06-21T03:17:48.000Z</published>
+    <updated>2025-12-13T17:21:39.474Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note success</summary>
+        
+      
+    
+    
+    
+    <category term="主题" scheme="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.gbfun.cc/tags/Hexo/"/>
+    
+    <category term="基础认识" scheme="https://blog.gbfun.cc/tags/%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/"/>
+    
+    <category term="文章排版" scheme="https://blog.gbfun.cc/tags/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88/"/>
+    
+    <category term="转载或翻译" scheme="https://blog.gbfun.cc/tags/%E8%BD%AC%E8%BD%BD%E6%88%96%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+</feed>

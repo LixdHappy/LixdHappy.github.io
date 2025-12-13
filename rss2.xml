@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="./rss/rss2.xsl" ?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GB的记事簿</title>
+    <link>https://blog.gbfun.cc/</link>
+    
+    <image>
+      <url>https://blog.gbfun.cc/img/%E7%88%86%E7%B1%B3%E8%8A%B1.svg</url>
+      <title>GB的记事簿</title>
+      <link>https://blog.gbfun.cc/</link>
+    </image>
+    
+    <atom:link href="https://blog.gbfun.cc/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Sat, 13 Dec 2025 17:21:39 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>魔改即刻短文兼容Ech0</title>
+      <link>https://blog.gbfun.cc/posts/56a1a68.html</link>
+      <guid>https://blog.gbfun.cc/posts/56a1a68.html</guid>
+      <pubDate>Thu, 11 Dec 2025 11:59:20 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/56a1a68.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>文章页尾评论区计数模块修改</title>
+      <link>https://blog.gbfun.cc/posts/8eee9317.html</link>
+      <guid>https://blog.gbfun.cc/posts/8eee9317.html</guid>
+      <pubDate>Sun, 23 Nov 2025 09:50:23 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/8eee9317.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>文章页头评论数模块悬停逻辑修改</title>
+      <link>https://blog.gbfun.cc/posts/397fd261.html</link>
+      <guid>https://blog.gbfun.cc/posts/397fd261.html</guid>
+      <pubDate>Thu, 09 Oct 2025 19:50:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/397fd261.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>仿Heo部分元素添加卡片式信息外框</title>
+      <link>https://blog.gbfun.cc/posts/e3515228.html</link>
+      <guid>https://blog.gbfun.cc/posts/e3515228.html</guid>
+      <pubDate>Sat, 06 Sep 2025 15:54:26 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/e3515228.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>anzhiyu主题文章板块中关于原创与判定的实现逻辑问题</title>
+      <link>https://blog.gbfun.cc/posts/6d59bdb1.html</link>
+      <guid>https://blog.gbfun.cc/posts/6d59bdb1.html</guid>
+      <pubDate>Sun, 24 Aug 2025 08:44:01 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/6d59bdb1.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>安知鱼主题标签 Tag Plugins</title>
+      <link>https://blog.gbfun.cc/posts/de7f0b92.html</link>
+      <guid>https://blog.gbfun.cc/posts/de7f0b92.html</guid>
+      <pubDate>Sun, 24 Aug 2025 04:20:44 GMT</pubDate>
+      
+      <description>添加大量外挂标签样式。</description>
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/">基础认识</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88/">文章排版</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E8%BD%AC%E8%BD%BD%E6%88%96%E7%BF%BB%E8%AF%91/">转载或翻译</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/Tag-Plugins/">Tag Plugins</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/de7f0b92.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>借助云服务器搭建穿透服务</title>
+      <link>https://blog.gbfun.cc/posts/34f45ae4.html</link>
+      <guid>https://blog.gbfun.cc/posts/34f45ae4.html</guid>
+      <pubDate>Mon, 18 Aug 2025 06:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;借助云服务器搭建穿透服务&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/">生活日常</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/%E6%B8%B8%E6%88%8F/">游戏</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/Minecraft/">Minecraft</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/34f45ae4.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>关于插件端新人腐竹推荐的一些插件</title>
+      <link>https://blog.gbfun.cc/posts/52088fd5.html</link>
+      <guid>https://blog.gbfun.cc/posts/52088fd5.html</guid>
+      <pubDate>Mon, 18 Aug 2025 06:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/">生活日常</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/%E6%B8%B8%E6%88%8F/">游戏</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/Minecraft/">Minecraft</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/52088fd5.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>关于个人备案心得</title>
+      <link>https://blog.gbfun.cc/posts/7a45d360.html</link>
+      <guid>https://blog.gbfun.cc/posts/7a45d360.html</guid>
+      <pubDate>Thu, 31 Jul 2025 15:55:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;为什么我要备案&quot;&gt;&lt;a href=&quot;#为什么我要备案&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/">生活日常</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/%E5%A4%87%E6%A1%88/">备案</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/7a45d360.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>本地翻译模型部署(个人随笔)</title>
+      <link>https://blog.gbfun.cc/posts/9fcec3f.html</link>
+      <guid>https://blog.gbfun.cc/posts/9fcec3f.html</guid>
+      <pubDate>Sat, 12 Jul 2025 05:18:47 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;一、硬件准备与系统配置&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/">生活日常</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/%E7%A7%91%E6%8A%80/">科技</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/9fcec3f.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>星露谷游玩使用的Mod</title>
+      <link>https://blog.gbfun.cc/posts/a489953f.html</link>
+      <guid>https://blog.gbfun.cc/posts/a489953f.html</guid>
+      <pubDate>Fri, 11 Jul 2025 04:18:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;星露谷物语-Mod-备份&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8/">生活日常</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/%E6%B8%B8%E6%88%8F/">游戏</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E7%AC%94%E8%AE%B0/">笔记</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/a489953f.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>如何移植Solitude主题中的十年之约进度条至anzhiyu主题</title>
+      <link>https://blog.gbfun.cc/posts/5498433.html</link>
+      <guid>https://blog.gbfun.cc/posts/5498433.html</guid>
+      <pubDate>Sun, 29 Jun 2025 17:04:01 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/5498433.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>如何在安知鱼主题中加入无聊湾</title>
+      <link>https://blog.gbfun.cc/posts/cd9cbdaa.html</link>
+      <guid>https://blog.gbfun.cc/posts/cd9cbdaa.html</guid>
+      <pubDate>Sun, 29 Jun 2025 06:34:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note blue</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">主题修改</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/anzhiyu/">anzhiyu</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/cd9cbdaa.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>什么是Markdown 以及怎么写才是更好的排版.</title>
+      <link>https://blog.gbfun.cc/posts/edc6e88.html</link>
+      <guid>https://blog.gbfun.cc/posts/edc6e88.html</guid>
+      <pubDate>Sat, 21 Jun 2025 03:17:48 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;note success</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.gbfun.cc/categories/%E4%B8%BB%E9%A2%98/">主题</category>
+      
+      
+      <category domain="https://blog.gbfun.cc/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E5%9F%BA%E7%A1%80%E8%AE%A4%E8%AF%86/">基础认识</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88/">文章排版</category>
+      
+      <category domain="https://blog.gbfun.cc/tags/%E8%BD%AC%E8%BD%BD%E6%88%96%E7%BF%BB%E8%AF%91/">转载或翻译</category>
+      
+      
+      <comments>https://blog.gbfun.cc/posts/edc6e88.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
