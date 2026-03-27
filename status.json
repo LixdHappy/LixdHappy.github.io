@@ -8,7 +8,7 @@
   "monitors": [
     {
       "id": 801226320,
-      "friendly_name": "Bing���日一图",
+      "friendly_name": "Bing每��一图",
       "url": "https://bing.gbfun.cc",
       "type": 1,
       "sub_type": "",
@@ -160,5 +160,5 @@
       "create_datetime": 1751109664
     }
   ],
-  "updated_at": "2026-03-27 10:05:45"
+  "updated_at": "2026-03-27 13:40:23"
 }
