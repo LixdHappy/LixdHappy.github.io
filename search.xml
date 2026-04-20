@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>魔改即刻短文兼容Ech0</title>
+      <link href="/posts/56a1a68.html"/>
+      <url>/posts/56a1a68.html</url>
+      <cover>https://img.gbfun.cc/file/blog/FSUOVmYQ.webp</cover>
+      <date>Thu Dec 11 2025 11:59:20 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。[链接]前言上个月看到[链接]的一篇关于类似朋友圈的迁移魔改文,同时自己也关注这类良久,毕竟托静态博客的福,你是无论如何都挺难像动态博客那样好处理即时的内容,不过可以参考类似部分大佬的教程,将页面修改为通过api获取内容的方式,使其展示在前端.我最早关注过memos和moments这两项项目,其中memos的设计是有比较大的缺陷(于我而言),单挑一处不稳定api就可以从这篇文章筛选出去了,不过好就好在占用极少,对在意占用资源的朋友们比较友好.所以这一篇的目的就是修改即刻短文的获取方式由原essay.yml变更为网络api[链接]参考文献以及鸣谢本文来源项目:[链接]本文修改基于以下项目:[链接]📍特别提醒请进行完以上部署的步骤后再进行以下的操作本文代码来源:[链接]本文另类思路来源:(提供了添加配置项的思路,避免后续维护直接修改代码带来的不可逆操作)[链接][链接]参考步骤[链接]优势对比接下来的表格来源于[链接]的[链接],基本我的评价也与此差不多.[链接]特性memosmomentsmemospwa适配✅支持❌不支持✅支持标签系统✅完善✅完善✅支持s3图床✅支持✅支持✅支持meting音乐❌不支持✅支持✅支持视频分享✅支持✅支持✅支持设计风格功能导向，略显臃肿功能全面，类似后台简约美观，轻量开发活跃度非常活跃，api易变相对稳定活跃，快速迭代个人评价功能强大，但更新太折腾，生态不稳定。功能完美，但没pwa对我是减分项界面戳我，功能追上来了，pwa是加分项，目前的最爱[链接]硬性要求一台服务器自主域名已部署anzhiyu的hexo博客[链接]ech0部署[链接]有服务器部署如果你拥有个人服务器的就继续参考柳神的步骤走下去[链接]在此我主要推无服务器的部署方法[链接]无服务器部署看到上面的[链接]要求有服务器,有人就懵逼了起来,”都穷玩博客了,我哪里会有多余资金购置服务器”说的对!对于我个人而言我是有一台服务器的,不过考虑到稳定性和续费的高昂价格,我不禁踌躇所以我们走一些比较偏门的方法,令我们拥有一台服务器在此我介绍云部署平台zeabur(非广),类似的有huggingface[图片]注册完毕后来到控制台-创建项目(随便一个地区)-docker容器镜像(填入以下内容)镜像:sn0wl1n/ech0:latest环境变量:jwt_secret(变量名);helloechos(变量值)端口:6277;http卷(创建两项):/data,/opt/ech0/data;/backup,/opt/ech0/backup具体解释源自:[链接]不过我发现这种部署方案更新比较麻烦创建完毕在项目里切换到网络,添加个人域名,比如我这里用的是ech0.gbfun.cc[图片]后面就可以进入域名,注册ech0的管理员账号了关于管理员的账号说明可以查阅上方的[链接]📍首次使用注册的账号会被设置为管理员（目前仅管理员支持发布内容）[链接]魔改方案接下来是高危步骤,请务必备份好源代码.📍特别提醒以下涉及修改内容较多,请务必备份源代码以方便回滚[链接]涉及的相关文件文件路径操作目的_config.anzhiyu.yml修改添加ech0配置项themes/anzhiyu/layout/includes/page/essay.pug修改动态加载容器themes/anzhiyu/layout/includes/bbtimelist.pug修改首页轮播条动态加载source/js/essay.js创建api获取与渲染逻辑themes/anzhiyu/layout/includes/additional-js.pug修改脚本配置注入themes/anzhiyu/source/js/utils.js修改更新initindexessaythemes/anzhiyu/source/css/_extra/essay_page/essay_page.css修改样式适配themes/anzhiyu/layout/includes/head.pug修改轮播css条件themes/anzhiyu/layout/includes/top/top.pug修改轮播js条件[链接]具体修改代码_config.anzhiyu.yml-添加ech0配置此处思路来源[链接]的友链朋友圈项目[链接]添加集中整体的api配置,便于维护[代码块][代码块]source/js/essay.js(核心逻辑)代码源于[链接]的[链接][链接][代码块][代码块]主要有几项特性:ech0api获取内容数据30分钟localstorage缓存支持图片,视频(b站&#x2f;youtube),音乐,外链兼容pjaxessay_page.css以下内容没有diff代码块标注修改位置,请自行斟辨.datacont与bber-content去除圆角(此处内容可能并不需要,因为我的修改内容过多,可能有破坏了该处的原有样式,所以我在此进行了修改,可能原有anzhiyu代码并没有此处内容)[代码块][代码块][代码块][代码块]没有此处的修改,可能会造成datacont容器左上方变为圆角essay-tag胶囊样式这里是我新加入的变量,用于获取ech0的内容tag标签,该处是绝对定位布置在时间的右边,链接的左边[代码块][代码块]视频容器样式[代码块][代码块]移动端朋友圈样式[代码块][代码块]整体上来说,这部分最明显的是处理了移动端的背景,在夜间模式增加了高斯模糊的背景,提高可视度.bbtimelist.pug此处用于处理首页轮播条的获取数据方式由essay.yml变更为ech0api,经过此步骤后essay.yml可以自行删除或留念[代码块][代码块]整体替换文件essay.pug整体替换文件[代码块][代码块]additional-js.pug[代码块][代码块]自行删除附带的+,还是没忍住标注utils.js457-481行左右[代码块][代码块]head.pug70-73行左右[代码块][代码块]确保在配置项的enable:true可以生效top.pug98-99行左右[代码块][代码块]同理至此,关于魔改即刻短文兼容ech0到此完毕剩下内容你可以查阅柳神的后续步骤[链接][链接][链接]总结如果你仔细查阅过本站的大部分内容,你会发现基本上是对于anzhiyu主题的魔改,算是一些对于优秀设计的简陋复刻,个人水平十分有限,也是个穷学生才会折腾静态博客,不过有一说一,hexo博客的构建着实令人着急,也难怪主题作者安知鱼会重构主题,不过个人认为这是潜力巨大才有开发的可能性在此已接近每月一篇文章的速度更新,后续或许还会更加懒散,希望大家多多担待,往后主题定性后或许就开始搬运自己的文章上来了,更新速度或许还会更快?如果你看到这里了,哪一天没有更新就可以看看[链接]了解一下情况,算对鄙人莫大的慰籍了在此,感谢你的耐心阅读,祝你有所感悟!]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文章页尾评论区计数模块修改</title>
+      <link href="/posts/8eee9317.html"/>
+      <url>/posts/8eee9317.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Sun Nov 23 2025 09:50:23 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。本文实现效果的样式定义与部分源码来自于[链接],感谢优秀的设计令人赏心悦目。[链接][链接]前言书承上文[链接]既然处理了文章页头,就对文章页尾评论模块开刀。[链接]修改概要增大评论标题图标与字体，仅作用于评论模块#post-comment。新增.comment-count-number角标，动态显示评论数；当评论数为0时不生成角标。适配多评论系统（twikoo&#x2f;waline&#x2f;valine&#x2f;artalk），按各系统的计数方式读取并渲染角标(未验证)。隐藏twikoo标题处的冗余计数，避免与角标重复。适配pjax防止切换页面导致角标丢失[链接]修改位置themes\anzhiyu\layout\includes\third-party\comments\index.pug:38-135[代码块][代码块]themes\anzhiyu\source\css\_layout\comments.styl:23–41[代码块][代码块]themes\anzhiyu\source\css\_third-party\twikoo.styl:462–464[代码块][代码块][链接]修改内容说明图标与字体增大：.comment-headline字体设为20px，评论图标i.anzhiyufont.anzhiyu-icon-comments设为22px脚本插入角标:动态插入span.comment-count-number，当计数为&gt;0时移除角标,不显示。多系统计数适配:未验证,只是跟着变量写下读取计数的方法(存疑项,待验证)]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文章页头评论数模块悬停逻辑修改</title>
+      <link href="/posts/397fd261.html"/>
+      <url>/posts/397fd261.html</url>
+      <cover>https://cdn.jsdelivr.net/gh/LixdHappy/Needaicon@main/%25E5%25B1%258F%25E5%25B9%2595%25E6%2588%25AA%25E5%259B%25BE%25202025-10-10%2520044041.png</cover>
+      <date>Thu Oct 09 2025 19:50:50 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。[链接]前言最近在完善hover的样式,文章页头的评论数统计只有评论数字可以跳转到评论区,与hover强调的整体性不是很匹配,故有此文[链接]原有实现的问题在修改前的anzhiyu主题中，评论计数区域的html结构如下：[代码块][代码块]这种设计存在两个主要问题：交互范围受限：只有数字部分可点击，图标区域无法触发跳转视觉不一致：悬停效果仅作用于数字部分，整体体验不连贯[链接]重建逻辑路径themes/anzhiyu/layout/includes/header/post-info.pug[代码块][代码块]关键改动点：将span.post-meta-commentcount改为a.post-meta-commentcount为a标签添加相应的href属性移除内层的a标签，保留span用于显示评论数[链接]css优化路径:themes/anzhiyu/source/css/_layout/head.styl[代码块][代码块][链接]多评论系统适配如果你进行了第一步的逻辑修改,你就会发现anzhiyu主题是对多评论系统进行了适配,所以考虑到即使有较小几率更换评论系统会产生的bug就需要进行协同修改[代码块][代码块]到此完毕]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>仿Heo部分元素添加卡片式信息外框</title>
+      <link href="/posts/e3515228.html"/>
+      <url>/posts/e3515228.html</url>
+      <cover>https://img.gbfun.cc/file/blog/TLwvLGaD.webp</cover>
+      <date>Sat Sep 06 2025 15:54:26 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。本文实现效果的样式定义与部分源码来自于[链接],感谢优秀的设计令人赏心悦目。[链接]为了方便写魔改总集缓解字数繁多显得杂乱的情况,特地抽出来一篇最近写的设计实现样式,也就是本文所写的–tooltip拓展信息框,方便各位参考以实现相同的设计样式。[图片]卡片式信息外框📍特别提醒本文涉及修改内容较多,请务必备份源代码以方便回滚[链接]实现方式在anzhiyu\layout\includes\layout.pug里添加如下内容,以确保页面能调用tooltip[代码块][代码块]添加gb-tooltip.js并引用,内容如下,当然也可以自定义文件名[代码块][代码块]样式定义,加入css,可加入到custom.css或自建文件进行调用[代码块][代码块]做完以上内容的添加,以后只要在元素上写gbtip=&quot;xxx&quot;，js就会自动处理,添加上tooltip拓展框。注:gbtip可以换为自己的定义,tip,heotip皆可,以下内容均以我自己的定义进行删改[链接]关于实现方面,我的修改如果你是跟着我的魔改修改下来的,以下会有部分内容与我的魔改主题相关,以下为我的修改内容,你可以参考大部分样式。📍特别提醒以下涉及修改内容较多,请务必备份源代码以方便回滚[链接]主页大体修改footer.pug部分(路径:anzhiyu\layout\includes\footer.pug)备案组(相关文字添加gbtip可以参考后续关于仿heo页脚添加备案组与页脚站点状态检测这篇文章,目前先占位[链接]cc协议[代码块][代码块]换一批友链[代码块][代码块]站点头像(相关内容可以参考后续关于仿solitude页脚站点名附带头像,目前先占位[链接][代码块][代码块]其中两处相同的均需要修改foot-bar-mini-logo[代码块][代码块]无聊湾徽标[链接][代码块][代码块]变量名#ghbdages(安知鱼主题自带徽标[代码块][代码块]变量名#footer_deal(迷你logo旁边的社交媒体[代码块][代码块]本步也有两处相同的内容需要一起修改top.pug部分(路径:anzhiyu\layout\includes\top\top.pug)更多推荐[代码块][代码块]nav.pug部分(路径anzhiyu\layout\includes\header\nav.pug)中控台[代码块][代码块]搜索[代码块][代码块]返回顶部[代码块][代码块]随机前往一处文章[代码块][代码块]返回主页[代码块][代码块]social.pug部分(路径:anzhiyu\layout\includes\header\social.pug)个人卡片旁的社交媒体部分[代码块][代码块]bbtimelist.pug部分(路径:anzhiyu\layout\includes\bbtimelist.pug)自行对照修改[代码块][代码块]categorygroup.pug部分(路径:anzhiyu\layout\includes\categorygroup.pug)此处内容有进行大幅度修改,填补了分类条部分的空缺位置(主要我很少给分类完成此部分的修改会有几处bug:子分类页固定项缺少信息拓展框子分类页的布局冲突以及拓展框丢失具体大致是由于修改了.catalog-list-item的内容作为了固定项,导致与anzhiyu主题自带的category.pug布局有冲突,因为此处的后续我有对分类条进行修改布局,所以如果你有兴趣,可以修改完以下的内容,点击跳转至[链接](占位)进行下一步的修改以完善分类条的布局[链接]你可以直接替换(categorygroup.pug)[代码块][代码块]补充剩余没有添加tooltip的部分路径anzhiyu\scripts\helpers\catalog_list.js[代码块][代码块]修改完以上内容,至此主页部分结束,以下内容为文章页修改[链接]文章页大体修改post-info.pug部分(路径:anzhiyu\layout\includes\header\post-info.pug)此处内容有进行大幅度修改,为了对应拓展信息框的修改,故将部分文字删去,显得简洁且不多余ip属地部分[代码块][代码块]字数统计(此处有大改,可自行对比源码)[代码块][代码块]阅读时长(此处有大改,可自行对比源码)[代码块][代码块]阅读量(我将此处修改为热度,毕竟小博客阅读量少显得太寒碜了[代码块][代码块]下方的waline,twikoo,artalk的title也需要对应修改为热度评论数[代码块][代码块]文章创建时间与更新时间(此处有大改,可自行对比源码)主要进行了拆分变量,原创建时间与更新时间是同一个变量.post-meta-date,我在此进行了拆分,并添加了新变量.post-meta-update对应更新时间[代码块][代码块]原创,转载或翻译,分类,tag部分此处有进行原创与转载判定的修改,具体可以参考本站的[链接],此处是对于当前修改的补充修改,未修改的请自行参考修改和源码几乎一模一样)[链接][代码块][代码块]为了协同修改,可以将链接修改的后续部分(anzhiyu\layout\includes\post\post-copyright.pug)一起修改,可以参考以下内容post-copyright.pug部分(anzhiyu\layout\includes\post\post-copyright.pug)原创,转载或翻译续修改[代码块][代码块]头像部分[代码块][代码块]页面评论部分(路径:anzhiyu\layout\includes\third-party\comments\index.pug)[代码块][代码块]根据以上的修改，大体上你就可以实现基本的样式了,大体上只要你找出元素,就可以添加,和添加标题的逻辑是相同的。(好像不知不觉挖了好多新坑]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>anzhiyu主题文章板块中关于原创与判定的实现逻辑问题</title>
+      <link href="/posts/6d59bdb1.html"/>
+      <url>/posts/6d59bdb1.html</url>
+      <cover>https://img.gbfun.cc/file/project/xQ9FzW4e.webp</cover>
+      <date>Sun Aug 24 2025 08:44:01 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。[链接]前言与实现逻辑在写部分转载文的时候,发现关于转载的判定有些奇怪。奇怪在哪里呢?假如说文章下方的版权模块是更多是为了介绍自己的一个板块,那你就可能可以理解为什么需要将copyright_author的作者修改为自己了,一个原因是你修改为转载文的原作者后头像不匹配,显得也不美观。另一个原因是它与你的.config.author有所冲突,anzhiyu主题的大量元素与这一项有关,比如说card-content个人卡片模块[图片]页脚的网站版权元素[图片]其中带有的名字,均与你的.config.author相关联,如果只是单单将_config.yml里关于作者的定义删去并不能治本,会导致许多元素缺失。所以在我的想法里应该要达到什么样的效果呢?保留copyright_author的定义可以写上自己的名字。(尽管它的本意是代表转载文的原作者名字不与config里的author冲突(毕竟转载判定只影响文章,而author就不同了所以这里就对部分转载文的原作者抱歉了[图片]本来的想法是蛮绕的,因为又是影响这个影响那个,导致思绪不是很好捋清。后来看到[链接]里关于front-matter-copyright的定义时,写法解释copyright【可选】显示文章版权模块(默认为设置中post_copyright的enable配置)copyright_author【可选】文章版权模块的文章作者copyright_author_href【可选】文章版权模块的文章作者链接copyright_url【可选】文章版权模块的文章链接链接copyright_info【可选】文章版权模块的版权声明文字copyright一般来说会在什么情况写在front-matter上呢?聪明的你一定知道–只有在确认它是转载文的时候会写上,而且不仅要写copyright的布尔值,还要将关于copyright的相关信息补充上所以思路打开了,就是只要写上copyright的布尔值就可以判断文章为转载当然实现的逻辑会不会有bug还有待商榷,比如有些刁钻的角度,假如说不写copyright的其他值影不影响原创转载的判断等等(这我还是不实验了吧,本来就自用的东西[链接]修改实现逻辑有了,剩下就是修改。修改的方式非常简单,所以这一篇的主要目的只是为了说明一下有这种情况发生,以及如何应对不符合常理的逻辑。1.路径anzhiyu\layout\includes\post\post-copyright.pug将原来.post-copyright__post__info下方的[代码块][代码块]修改为[代码块][代码块]经过这一步修改后你会发现版权模块的原创与转载逻辑改变了但是post-info的原创与转载判定还没有改变,所以你还要接着下一步2.路径anzhiyu\layout\includes\header\post-info.pug下找到[代码块][代码块]修改为[代码块][代码块]那么以后就只需要在front-matter里添加上copy-right就可以实现原创与转载的手动标注[链接]后续如果你有兴趣，可以完成后续的步骤,因为对于本文的修改来说其实还不算太完善[链接]]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安知鱼主题标签 Tag Plugins</title>
+      <link href="/posts/de7f0b92.html"/>
+      <url>/posts/de7f0b92.html</url>
+      <cover>https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e146a8bbd.webp</cover>
+      <date>Sun Aug 24 2025 04:20:44 GMT+0000</date>
+      
+        <content type="html"><![CDATA[anzhiyu主题中大部分标签移植于[链接]的[链接]，转载请注明来自[链接][链接]段落文本p标签语法配置参数样式预览示例源码[代码块][代码块]字体:logo,code颜色:red,yellow,green,cyan,blue,gray大小:small,h4,h3,h2,h1,large,huge,ultra对齐方向:left,center,right彩色文字在一段话中方便插入各种颜色的标签，包括：红色、黄色、绿色、青色、蓝色、灰色。超大号文字文档「开始」页面中的标题部分就是超大号文字。volantisawonderfulthemeforhexo[代码块][代码块][链接]行内文本span标签语法配置参数样式预览示例源码[代码块][代码块]字体:logo,code颜色:red,yellow,green,cyan,blue,gray大小:small,h4,h3,h2,h1,large,huge,ultra对齐方向:left,center,right彩色文字在一段话中方便插入各种颜色的标签，包括：红色、黄色、绿色、青色、蓝色、灰色。超大号文字文档「开始」页面中的标题部分就是超大号文字。volantisawonderfulthemeforhexo[代码块][代码块][链接]行内文本样式text标签语法样式预览示例源码[代码块][代码块]带下划线的文本带着重号的文本带波浪线的文本带删除线的文本键盘样式的文本command+d密码样式的文本：这里没有验证码[代码块][代码块][链接]分栏tab分栏支持内置阿里图标，如果开启了fontawesome可以使用fontawesome的图标，否则只能使用默内置阿里图标标签语法配置参数[代码块][代码块]uniquename:选项卡块标签的唯一名称，不带逗号。将在#id中用作每个标签及其索引号的前缀。如果名称中包含空格，则对于生成#id，所有空格将由破折号代替。仅当前帖子&#x2f;页面的url必须是唯一的！[index]:活动选项卡的索引号。如果未指定，将选择第一个标签（1）。如果index为-1，则不会选择任何选项卡。可选参数。[tabcaption]:当前选项卡的标题。如果未指定标题，则带有制表符索引后缀的唯一名称将用作制表符的标题。如果未指定标题，但指定了图标，则标题将为空。可选参数。[@icon]:-fontawesome图标名称（全名，看起来像“fasfa-font”）-可以指定带空格或不带空格；-例如’tabcaption@icon’和‘tabcaption@icon’.-可选参数。[链接]按钮btns标签语法参数配置样式预览示例源码[代码块][代码块]圆角样式：rounded,circle增加文字样式：可以在容器内增加&lt;b&gt;标题&lt;/b&gt;和&lt;p&gt;描述文字&lt;/p&gt;布局方式：默认为自动宽度，适合视野内只有一两个的情况。参数含义wide宽一点的按钮fill填充布局，自动铺满至少一行，多了会换行center居中，按钮之间是固定间距around居中分散grid2等宽最多2列，屏幕变窄会适当减少列数grid3等宽最多3列，屏幕变窄会适当减少列数grid4等宽最多4列，屏幕变窄会适当减少列数grid5等宽最多5列，屏幕变窄会适当减少列数如果需要显示类似「团队成员」之类的一组含有头像的链接：[链接][链接][链接][链接][链接]或者含有图标的按钮：[链接][链接]圆形图标+标题+描述+图片+网格5列+居中[链接][链接]如果需要显示类似「团队成员」之类的一组含有头像的链接：[代码块][代码块]或者含有图标的按钮：[代码块][代码块]圆形图标+标题+描述+图片+网格5列+居中[代码块][代码块][链接]按钮btn标签语法参数配置样式预览示例源码[代码块][代码块]参数含义url链接text按钮文字icon[可选]图标，如果开启了fontawesome可以使用fontawesome的图标，否则只能使用默内置图标color[可选]按钮背景顔色(默认style时）按钮字体和边框顔色(outline时)default&#x2f;blue&#x2f;pink&#x2f;red&#x2f;purple&#x2f;orange&#x2f;greenstyle[可选]按钮样式默认实心数，outline&#x2f;留空layout[可选]按钮佈局默认为lineblock&#x2f;留空position[可选]按钮位置前提是设置了layout为block默认为左边center&#x2f;right&#x2f;留空数size[可选]按钮大小larger&#x2f;留空一组按钮thisismywebsite,clickthebutton[链接]thisismywebsite,clickthebutton[链接]thisismywebsite,clickthebutton[链接]thisismywebsite,clickthebutton[链接]thisismywebsite,clickthebutton[链接]调整位置&#x2f;大小[链接][链接][链接]morethanonebuttonincenter[链接][链接][链接][链接][链接][链接][链接]居中按钮[链接][链接][链接][链接][链接][链接][链接]一组按钮[代码块][代码块]调整位置&#x2f;大小[代码块][代码块]morethanonebuttonincenter[代码块][代码块]居中按钮[代码块][代码块][链接]网站卡片sites标签语法样式预览示例源码[代码块][代码块][链接][链接][链接][代码块][代码块][链接]单张图片image标签语法参数配置样式预览示例源码[代码块][代码块]图片宽度高度：width&#x3d;300px,height&#x3d;32px图片描述：alt&#x3d;图片描述（butterfly需要在主题配置文件中开启图片描述）占位背景色：bg&#x3d;#f2f2f2添加描述：[图片]每天下课回宿舍的路，没有什么故事。指定宽度：[图片]指定宽度并添加描述：[图片]每天下课回宿舍的路，没有什么故事。设置占位背景色：[图片]优化不同宽度浏览的观感添加描述：[代码块][代码块]指定宽度：[代码块][代码块]指定宽度并添加描述：[代码块][代码块]设置占位背景色：[代码块][代码块][链接]inlineimg行内图片标签语法参数配置样式预览示例源码[代码块][代码块]参数含义src图片链接height图片高度限制【可选】你看我长得漂亮不[图片]我觉得很漂亮[图片][代码块][代码块][链接]行内图片inlineimage标签语法参数配置样式预览示例源码[代码块][代码块]高度：height&#x3d;20px这是[图片]一段话。这又是[图片]一段话。[代码块][代码块][链接]label标签标签语法参数配置样式预览示例源码[代码块][代码块]参数含义text文字color【可选】背景颜色，默认为default，default&#x2f;blue&#x2f;pink&#x2f;red&#x2f;purple&#x2f;orange&#x2f;green臣亮言：先帝创业未半，而中道崩殂。今天下三分，益州疲敝，此诚危急存亡之秋也！然侍衞之臣，不懈于内；忠志之士，忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气；不宜妄自菲薄，引喻失义，以塞忠谏之路也。宫中、府中，俱为一体；陟罚臧否，不宜异同。若有作奸、犯科，及为忠善者，宜付有司，论其刑赏，以昭陛下平明之治；不宜偏私，使内外异法也。[代码块][代码块][链接]timeline标签语法参数配置样式预览示例源码[代码块][代码块]参数含义title标题&#x2f;时间线colortimeline颜色，default(留空)&#x2f;blue&#x2f;pink&#x2f;red&#x2f;purple&#x2f;orange&#x2f;green默认颜色202201-02这是测试页面blue202201-02这是测试页面pink202201-02这是测试页面red202201-02这是测试页面purple202201-02这是测试页面orange202201-02这是测试页面green202201-02这是测试页面默认颜色[代码块][代码块]blue[代码块][代码块]pink[代码块][代码块]red[代码块][代码块]purple[代码块][代码块]orange[代码块][代码块]green[代码块][代码块][链接]flink友链标签可在任何界面插入类似友情链接列表效果，内容格式与友情链接界面一样，支持yml格式,注意yml数据具有格式要求，请注意格式对齐，防止被编辑器格式化导致格式错误从而报错。标签语法参数配置样式预览示例源码[代码块][代码块]参数含义class_nameh2标题flink_style【可选】友链样式，默认为flexcard，flexcard&#x2f;anzhiyulink_list【可选】友链样式，默认为flexcard，flexcard&#x2f;anzhiyu推荐博客[链接]网站值得推荐的网站[链接][链接][链接][代码块][代码块][链接]mermaid图使用mermaid标签可以绘制flowchart（流程图）、sequencediagram（时序图）、classdiagram（类别图）、statediagram（状态图）、gantt（甘特图）和piechart（圆形图），具体可以查看[链接]修改主题配置文件[代码块][代码块]标签语法样式预览示例源码[代码块][代码块][图片][代码块][代码块][链接]复选列表checkbox标签语法配置参数样式预览示例源码[代码块][代码块]样式:plus,minus,times颜色:red,yellow,green,cyan,blue,gray选中状态:checked纯文本测试支持简单的[链接]语法支持自定义颜色绿色+默认选中黄色+默认选中青色+默认选中蓝色+默认选中增加减少叉[代码块][代码块][链接]dogeplayer多吉云播放器快捷引入[链接]标签语法参数配置样式预览示例源码[代码块][代码块]获取userid与vcode[图片]参数含义userid多吉云useridvcode视频vcode[图片][代码块][代码块][链接]折叠框folding折叠框folding标签语法配置参数样式预览示例源码[代码块][代码块]颜色：blue,cyan,green,yellow,red状态：状态填写open代表默认打开。查看图片测试[图片]查看默认打开的折叠框这是一个默认打开的折叠框。查看代码测试[代码块][代码块]查看列表测试hahahehe查看嵌套测试查看嵌套测试2查看嵌套测试3hahaha[图片][代码块][代码块][链接]gallery相册图库一个图库集合。[链接]tag-hide如果你想把一些文字、内容隐藏起来，并提供按钮让用户点击显示。可以使用这个标签外挂。请注意，tag-hide内的标签外挂content内都不建议有h1-h6等标题。因为toc会把隐藏内容标题也显示出来，而且当滚动屏幕时，如果隐藏内容没有显示出来，会导致toc的滚动出现异常。inlineblocktoggleinline在文本里面添加按钮隐藏内容，只限文字(content不能包含英文逗号，可用&amp;sbquo;)[代码块][代码块]content:文本内容display:按钮显示的文字(可选)bg:按钮的背景颜色(可选)color:按钮文字的颜色(可选)demo[代码块][代码块]哪个英文字母最酷？查看答案因为西装裤(c装酷)门里站着一个人?click闪block独立的block隐藏内容，可以隐藏很多内容，包括图片，代码块等等(display不能包含英文逗号，可用&amp;sbquo;)[代码块][代码块]content:文本内容display:按钮显示的文字(可选)bg:按钮的背景颜色(可选)color:按钮文字的颜色(可选)demo[代码块][代码块]查看答案查看答案傻子，怎么可能有答案如果你需要展示的内容太多，可以把它隐藏在收缩框里，需要时再把它展开。(display不能包含英文逗号，可用&amp;sbquo;)[代码块][代码块]demoanzhiyu主题安装方法在你的博客根目录里gitclone-bmaster[链接]themes&#x2f;anzhiyu如果想要安装比较新的dev分支，可以gitclone-bdev[链接]themes&#x2f;anzhiyu[链接]链接卡片link标签语法样式预览示例源码[代码块][代码块][链接][代码块][代码块][链接]单选列表radio标签语法配置参数样式预览示例源码[代码块][代码块]颜色:red,yellow,green,cyan,blue,gray选中状态:checked纯文本测试支持简单的[链接]语法支持自定义颜色绿色黄色青色蓝色[代码块][代码块][链接]上标标签tip主要样式参考自[链接]标签语法配置参数样式预览示例源码[代码块][代码块]样式:success,error,warning,bolt,ban,home,sync,cogs,key,bell自定义图标:支持fontawesome。defaultinfosuccesserrorwarningboltbanhomesynccogskeybell自定义fontawesome图标[代码块][代码块][链接]note(bootstrapcallout)通用配置语法格式配置参数样式预览示例源码修改主题配置文件[代码块][代码块]note标签外挂有两种用法。icons和light_bg_offset只对方法一生效。fontawesome图标需开启主题配置文件中icons.fontawesome方法一[代码块][代码块]方法二[代码块][代码块]方法一参数用法class【可选】标识，不同的标识有不同的配色（default&#x2f;primary&#x2f;success&#x2f;info&#x2f;warning&#x2f;danger）no-icon【可选】不显示iconstyle【可选】可以覆盖配置中的style（simple&#x2f;modern&#x2f;flat&#x2f;disabled）方法二参数用法class【可选】标识，不同的标识有不同的配色（default&#x2f;blue&#x2f;pink&#x2f;red&#x2f;purple&#x2f;orange&#x2f;green）no-icon【可选】可配置自定义icon(支持fontawesome图标和主题内置的阿里图标,fontawesome图标需开启主题配置文件中icons.fontawesome,也可以配置no-icon)style【可选】可以覆盖配置中的style（simple&#x2f;modern&#x2f;flat&#x2f;disabled）方法一simple样式默认提示块标签default提示块标签primary提示块标签success提示块标签info提示块标签warning提示块标签danger提示块标签modern样式默认提示块标签default提示块标签primary提示块标签success提示块标签info提示块标签warning提示块标签danger提示块标签flat样式默认提示块标签default提示块标签primary提示块标签success提示块标签info提示块标签warning提示块标签danger提示块标签disabled样式默认提示块标签default提示块标签primary提示块标签success提示块标签info提示块标签warning提示块标签danger提示块标签no-icon样式默认提示块标签default提示块标签primary提示块标签success提示块标签info提示块标签warning提示块标签danger提示块标签方法二图标支持fontawesome和主题内置的阿里图标，使用方法为加上对应的类名，fontawesome图标需开启主题配置文件中icons.fontawesome，默认未开启fontawesomesimple样式主题内置阿里图标你是刷visa还是unionpay2022年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见你是刷visa还是unionpay2022年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏器modern样式主题内置阿里图标你是刷visa还是unionpay2022年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见你是刷visa还是unionpay2021年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器flat样式主题内置阿里图标你是刷visa还是unionpay2022年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见你是刷visa还是unionpay2021年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器disabled样式主题内置阿里图标你是刷visa还是unionpay2022年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见你是刷visa还是unionpay2021年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器no-icon样式你是刷visa还是unionpay2021年快到了….小心开车安全至上这是三片呢？还是四片？你是刷visa还是unionpay剪刀石头布前端最讨厌的浏览器方法一simple样式[代码块][代码块]modern样式[代码块][代码块]flat样式[代码块][代码块]disabled样式[代码块][代码块]no-icon样式[代码块][代码块]方法二图标支持fontawesome和主题内置的阿里图标，使用方法为加上对应的类名，fontawesome图标需开启主题配置文件中icons.fontawesome，默认未开启fontawesomesimple样式主题内置阿里图标[代码块][代码块]fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见[代码块][代码块]modern样式主题内置阿里图标[代码块][代码块]fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见[代码块][代码块]flat样式主题内置阿里图标[代码块][代码块]fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见[代码块][代码块]disabled样式主题内置阿里图标[代码块][代码块]fontawesome图标，开启主题配置文件中的icons.fontawesome为true后可见[代码块][代码块]no-icon样式[代码块][代码块][链接]音频audio标签语法样式预览示例源码[代码块][代码块][链接]视频video标签语法参数配置样式预览示例源码[代码块][代码块]对其方向：left,center,right列数：逗号后面直接写列数，支持1～4列。100%宽度[图片]50%宽度[图片]25%宽度[图片]100%宽度[代码块][代码块]50%宽度[代码块][代码块]25%宽度[代码块][代码块]]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 基础认识 </tag>
+            
+            <tag> 文章排版 </tag>
+            
+            <tag> 转载或翻译 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+            <tag> Tag Plugins </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>借助云服务器搭建穿透服务</title>
+      <link href="/posts/34f45ae4.html"/>
+      <url>/posts/34f45ae4.html</url>
+      <cover>https://img.gbfun.cc/file/blog/x6kaBsHe.webp</cover>
+      <date>Mon Aug 18 2025 06:00:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]借助云服务器搭建穿透服务使用环境:云服务器:ubuntu22.0464位本机:windows11[链接]服务端配置使用ssh连接云服务器地址,根目录下创建frps文件夹,具体路径为/root/frps下载[链接],(建议先解压出来查看文件,杀毒软件会消杀frpc.exe文件,注意文件完整性),解压frp_0.64.0_linux_amd64.tar.gzfrp_0.64.0_windows_amd64.zip,并放至相关路径备用,编辑frps.toml文件,并替换复制以下内容[代码块][代码块]上传frpsfrps.toml到服务器的新建目录/root/frps下并给予777权限,即全部权限切换至文件夹cd/frps;运行命令./frps-c./frps.toml启动以上步骤操作完你就可以使用服务器公网地址+:7500端口号进入可视化面板了如果你使用的操作系统是centos7等,需要安装systemd,具体你可以查阅相关教程;ubuntu15.04以后自带systemd,可以忽略安装.打开新终端页面,找到/etc/systemd/system目录,并创建frps.service文件,用于配置frps服务,文件内容如下:[代码块][代码块]切换cd/frps文件夹,启动frps,查看运行状态,有绿灯即为成功,相关命令如下:[代码块][代码块]至此,服务端配置结束[链接]客户端配置你想要的路径新建/frpc文件夹,移动压缩包内文件frpc.exefrpc.toml到新路径编辑frpc.toml文件[代码块][代码块]终端切换至frpc文件夹cdc:\frpc,运行frpc-cfrpc.toml有以下输出,即为成功[代码块][代码块]保活服务,下载[链接],并解压到frpc文件夹,方便管理[代码块][代码块]path项选择frpc.exearguments写入-cfrpc.toml至此完成客户端配置[链接]使用自己的域名作为游戏服务器地址[链接]]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> Minecraft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于插件端新人腐竹推荐的一些插件</title>
+      <link href="/posts/52088fd5.html"/>
+      <url>/posts/52088fd5.html</url>
+      <cover>https://img.gbfun.cc/file/blog/x6kaBsHe.webp</cover>
+      <date>Mon Aug 18 2025 06:00:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]前言因为假期的无趣,开始了学习开服的经历,拜现在各位前辈的努力,我的世界开服的操作已经是一键化的事情了,但是光会开服可不是一件简单的事情,还得学会维护,以下是本人游玩过程中觉得一些需要的插件与心得.目前来说使用的是b站up主的插件整合包[链接]本文是基于已经在整合包内含有的插件所做出的增添与删减关键词:paper;spigot;bukkit;leaves游戏版本：1.21.8游玩场景:自己与家人,同学[链接]插件推荐[链接]连锁挖矿连锁砍树几个比较有意思的插件,不太喜欢生电还要耗费许多的精力在前期的事情上veinminer连锁挖矿treecuter连锁砍树这两个插件都是来源同一个作者做的,应该属于一个套系的。需要注意的是,连锁挖矿插件需要自己配置一下深层矿脉的名称,比如深层钻石等。[链接]怕死几件套基于生电玩家自古以来与pvp不沾边，同时死亡次数也是居高不下的一类人群，所以我怕死了，选择添加几件套保住自己的狗命。（更主要是整合包里有精英怪插件）[链接]世界保护插件–nobuildplus[链接]以下内容摘自第一项链接目前有的规则:break(破坏),build(建造),use(使用(工作台、铁砧等)),container(打开容器),move(移动),mob-damage(对生物造成伤害),mob-explode(生物爆炸),pvp(pvp),shoot(射击)tnt(tnt爆炸),tnt-damage(tnt爆炸伤害),frame(展示框保护),bed(床),voidtp(虚空传送),villager(右键村民),command(指令),chat(聊天),leaf-decay(树叶枯萎),melt(冰雪融化),fall-damage(摔落伤害),armorstand(盔甲架),farmbreak(农耕破坏),ride(右键能骑的实体),painting(画),bucket-place(桶放置),bucket-fill(桶填满),boat(船),button(按钮),door-interact(玩家与门互动),lever(拉杆),trapdoor-interact(活版门),fencegate-interact(栅栏门),drop-item(玩家丢弃物品),egg-throw(鸡蛋投掷),snowball-throw(雪球投掷),water-spread(水蔓延),lava-spread(岩浆蔓延),fly(飞行),teleport(玩家传送),mob-spawn(生物生成),minecart(矿车互动),item-pickup(物品拾取),potion(喝药水),bonemeal(骨粉催熟),elytra(鞘翅使用),nether(地狱传送门建立),coral-decay(珊瑚失活)强烈建议在worlds.yml里更改flag的true&#x2f;false,而不是&#x2f;nbpflag添加插件后需要运行指令:输入/nbpadd&lt;世界&gt;在worlds.yml中创建世界输入/nbpflag&lt;世界&gt;&lt;规则&gt;&lt;布尔值&gt;更改世界的规则(true&#x3d;允许&#x2f;false&#x3d;禁止)一般在config.yml可以进行修改以上步骤进行完后,在游戏内输入/nbpopenworld打开gui界面比较实用的一个插件,但是有些内容我这边测试是没有生效的(懒得排查),比如说村民交易,对生物造成破坏,农耕破坏等。有效的几个关键性按钮，比如说生物爆炸,tnt类的,其他还没有使用的到,暂时没有测试。比较可惜的是没有火势不蔓延我使用这个插件的契机是整合包内的精英怪插件有些过于变态,加上苦力怕是增强过且秒炸的那种(露头就秒,受不住地形的破坏过于严重,毕竟生电还要添置一大堆机子,可受不住他们的折腾.(特别是僵尸图腾),所以如果你也有这类的烦恼,可以尝试将生物破坏关了。与之类似的还有一个插件–fkeepinventorypro[链接][链接]玩家背包物品回滚–inventoryrollbackplus[链接]用过都说好指令集/irprestore[玩家名]打开一个菜单，查看该玩家的所有备份（玩家名可选）/irpforcebackup&lt;all/玩家名&gt;&lt;备份名&gt;手动创建一个备份（可对所有玩家或指定玩家）/irpenable启用插件（如果当前处于禁用状态）/irpdisable禁用插件（如果当前已启用）/irpreload重新加载配置文件/irphelp显示所有命令的帮助信息/irpversion显示插件版本、作者和更新链接信息[链接]一些优化服务器体验的插件[链接]菜单插件–dmenuforpaper[代码块][代码块][代码块][代码块]选择这款插件的原因也很直接,语法非常简单,不过作为一款服务器的菜单插件来说,基本功能是能够实现了,但是稍显力不足,部分体验不是很好,至于是什么呢就需要你游玩才能发现了,也希望有人能推荐更好且轻量化的菜单插件。指令集:输入/dmenuopen[菜单名]打开菜单gui输入/dmenureload热重载插件配置[链接]扫地姬,世界清扫插件–⭐worldlisttrashcan⭐[代码块][代码块]这个插件还增添了个人垃圾桶的选项,具体可以去插件的配置文件进行修改[链接]几项建议,到手记得修改清扫提示为chat以外的生电玩家记得修改清扫实体的部分内容,特别是密集实体清理插件变量[placeholders]%wtc_cleartime%距离下一次清理垃圾的时间[链接]内存优化–letyourmemoryrest[链接]可用命令：&#x2f;lumrhelp-显示命令帮助&#x2f;lumrreload-重新加载配置文件(热重载)&#x2f;lumrstatus-显示当前内存统计信息&#x2f;lumrgc-手动触发安全垃圾回收&#x2f;lumroptimize-运行特定优化（实体、区块、玩家数据等）&#x2f;lumroptimizeall-执行所有优化&#x2f;lumrclean-清理特定数据类型（标签、记分牌、方块实体）&#x2f;lumrdump-生成详细的内存转储报告&#x2f;lumrdashboard-打开交互式内存仪表板gui到手需要修改实体优化的部分,对于生电玩家来说,没有什么比清理村民清理矿车更绝望的事吧。其他方面我觉得它自带的gui已经能概括上面的指令,所以实际使用下来我单需要/lumrdashboard就足够了。[链接]日志清除–logfilter[链接]控制台关于java或者其他warn太多,有些影响到查看服务器后台状态,所以给出自己的keyword就可以配置屏蔽了。关于我的keyword,我写的几个比较常见的warn提示词[代码块][代码块][链接]服务器关闭倒计时–servershutdown[链接]代码写的比较干练,轻量化插件,毕竟功能实现并没有什么难点,自己人玩的话就没必要添加了,不过自己做服主会有一种情况发生,自己猛猛修bug,朋友刷刷玩,体验不好还要赖到你身上,自己没得玩不说,甚至还要被扣锅.[链接]计分板插件–tab内容比较多,具体可以查看下面的链接,主要是关于placeholders的配置[链接][链接]有些人可能不知道这类插件的意义,但是你玩大型服的时候这类插件会给你提供更加干练的信息,方便查阅[链接]防止一些奇奇怪怪的断开连接–antidisconnectspam游玩的时候会经常碰到奇怪的踢服理由,包括服主在内都能踢(一个字-绝了.jpg[链接][链接][链接]排行榜插件–[playertoplist]基于统计数据的排行榜插件用来查看自己的风光伟业。[链接]与之类似的有一个生存数据包也能实现这样的计分板效果[链接]生电圈应该蛮出名的[链接]铁块电梯–ironelevators以前玩空岛服觉得体验比较好的几个插件,到手后需要修改铁块电梯的上限高度,默认配置是14的方块高度,建议拉到999,当然这看个人[链接]依稀记得还有一个铁轨传送的赶路插件,没有特地找,以后觉得有必要再添置吧。[链接]几项影响服务器性能的插件假如说风光战胜了你的性能,那我选择好看。[链接]区块预加载–chunky[链接][链接]谨慎使用,一轮下来存档内存拉满了!不过带来的体验确实友好,至少缓解了跑图可能会崩服的情况。内容摘自mc百科任务管理chunkystart从当前选择开始一个新的区块生成任务chunkypause暂停当前区块生成任务，并保存进度chunkycontinue继续运行当前或已保存的区块生成任务chunkycancel停止当前区块生成任务，并取消进度选择chunkyworld[world]设置当前选中的世界chunky形状&lt;形状&gt;将[链接]设置为生成chunky中心[]设置当前中心方块位置chunky半径设置当前半径chunky世界边界将中心点和半径设置为与选定世界的世界边界匹配chunkyspawn将中心设置为出生点chunkycorners通过角坐标设置选择chunkypattern设置首选生成[链接]chunkyselection显示当前选择杂项chunkysilent切换是否显示更新消息chunkyquiet设置更新消息的静音间隔（秒）chunkyprogress在游戏中显示所有任务的预生成进度chunkyreload重新加载配置chunkytrim删除选择区域外的区块示例在主世界以0,0为中心、半径为1000个方块的方形区域内生成区块[代码块][代码块]在末地以出生点为中心、半径为1000个方块的圆形区域内生成区块[代码块][代码块]在世界边界内以0,0为中心、半径为10000个方块的区域内生成区块[代码块][代码块]理论来说,radius+半径范围就足够应付自己的游玩了[链接]遥远地平线–dh更加具体可以查阅这一篇设置,真神是真神,但是容易连带着服务器一起重启,估计是性能不够,也可能是面板服防止过载的措施。总之是气的我用自己的个人电脑来开服了,那个体验不完爆面板服的小鸡配置?[链接]内容摘自mc百科&#x2f;dhspregen预生成是为了避免在生成过程中影响游戏体验，请不要在玩家正在游玩的服务器上运行此操作，以免在生成过程中遇到tps暴跌。/dhsstatus查看插件的状态。&#x2f;dhsstatus&lt;玩家名称&gt;查看指定玩家插件的状态。/dhsreload重新加载配置文件。&#x2f;dhsworlds列出服务器上的所有世界。/dhspregenstart&lt;世界名称&gt;&lt;x坐标&gt;&lt;z坐标&gt;&lt;半径&gt;[force]开始后台生成lod。如果不提供参数，它将使用当前世界及其边界来定义生成区域。如果在末尾附加单词“force”，则会重新生成现有的lod，而不是跳过。&#x2f;dhspregenstatus&lt;世界名称&gt;输出生成进度。如果不指定世界，将使用当前世界。/dhspregenstop&lt;世界名称&gt;停止生成。如果没有指定世界，则将使用当前世界。&#x2f;dhspause暂停所有lod生成。在备份期间防止数据库写入时很有用。/dhsunpause恢复lod生成。&#x2f;dhstrim&lt;世界名称&gt;&lt;x坐标&gt;&lt;z坐标&gt;&lt;半径&gt;删除给定区域外的lod，通过x值和z&#96;&#96;值确定中心点，&lt;半径&gt;确定半径。如果没有参数，则将使用当前世界及其边界来定义该区域。[链接]关于自己添加的一些插件[链接]类地毯端假人插件–fakeplayer有实际体验过假人模组的会发现这个上手也特别快,关于插件内容你可以查看minebbs的这篇转载文[链接]更加具体可以去github查看wiki[链接]关于这部分内容,我的实际体验下来会发现,假人的右键交互有些许问题,种地种树没反应,反倒是我在树场排查下来后发现假人只能使用骨粉催生,对位这些操作与地毯端的保持一致,不过spawn指令缺少方位角的设置,只有xyz坐标(这f3+c不是没用了嘛。命令作用权限备注&#x2f;fpspawn召唤假人fakeplayer.command.spawn&#x2f;fpkill杀死假人fakeplayer.command.kill&#x2f;fpkillall杀死服务器所有假人op&#x2f;fpselect选中假人fakeplayer.command.select当玩家假人数量&gt;&#x3d;2时才会出现&#x2f;fpselection查看选中假人fakeplayer.command.selection当玩家假人数量&gt;&#x3d;2时才会出现&#x2f;fplist查看已召唤的假人fakeplayer.command.list&#x2f;fpdistance查看与假人的距离fakeplayer.command.distance&#x2f;fpdrop丢弃手上一个物品fakeplayer.command.drop&#x2f;fpdropstack丢弃手上整组物品fakeplayer.command.dropstack&#x2f;fpdropinv丢弃背包所有物品fakeplayer.command.dropinv&#x2f;fpskin复制玩家皮肤fakeplayer.command.skin非在线玩家有60秒冷却&#x2f;fpinvsee查看假人背包fakeplayer.command.invsee玩家对假人右键同等效果&#x2f;fpsleep睡觉fakeplayer.command.sleep&#x2f;fpwakeup起床fakeplayer.command.wakeup&#x2f;fpstatus查看假人状态fakeplayer.command.status&#x2f;fprespawn让死亡的假人复活fakeplayer.command.respawn当服务器配置假人死亡时不踢出才会出现&#x2f;fptp传送到假人身边fakeplayer.command.tp&#x2f;fptphere让假人传送到身边fakeplayer.command.tphere&#x2f;fptps与假人交换位置fakeplayer.command.tps&#x2f;fpset更改假人的配置fakeplayer.command.set&#x2f;fpconfig更改默认假人配置fakeplayer.command.config&#x2f;fpexpme吸收假人经验值fakeplayer.command.expme&#x2f;fpattack攻击fakeplayer.command.attack&#x2f;fpmine挖掘fakeplayer.command.mine&#x2f;fpuse使用&#x2f;交互&#x2f;放置fakeplayer.command.use&#x2f;fpjump跳跃fakeplayer.command.jump&#x2f;fpturn转身fakeplayer.command.turn&#x2f;fplook看向指定位置fakeplayer.command.look&#x2f;fpmove移动fakeplayer.command.mvoe&#x2f;fpride骑乘fakeplayer.command.ride&#x2f;fpsneak潜行fakeplayer.command.sneak&#x2f;fpswap交换主副手物品fakeplayer.command.swap&#x2f;fphold手持对应快捷栏物品fakeplayer.command.hold&#x2f;fpcmd让假人执行命令fakeplayer.command.cmd不给权限的情况下，允许执行配置文件里定义的命令&#x2f;fpreload重载配置文件op[链接]装甲鞘翅–armoredelytra[链接]功能上不是说没用,只是说延长鞘翅的寿命至于更方便的话我觉得tweakeroo的自动替换鞘翅完全可以胜任,定位来说是娱乐模组,不过建议不要拿带附魔的装备合成,会吞附魔。[链接]整合包的补充插件与设置[链接]mcmmoview整合包自带一个mcmmo的插件,个人觉得这是一个提高游戏寿命与乐趣的插件,但是插件自带的指令稍显麻烦,查看相关技能等级体验较差,所以找到了这个插件[链接]指令也很干练,指令作用&#x2f;mcmmoviewopen打开gui&#x2f;mcmmoviewreload重载配置[链接]关闭mcmmo的过度捕捞提示挂机钓个鱼可太烦了,具体还有一个反刷怪机制,怪物自己来得多能怪我去刷吗?[链接][链接]权限组件luckperms的设置作为一个以前完全没有接触过服务器设置的新人服主来说,这个插件的上手有些过于难了,至于它的可视化面板我觉得还不如我敲指令后再拿可视化面板看看生效管用[链接]具体我是借鉴这一篇文章的设置[链接]整合包一些常用的插件指令[代码块][代码块]最后,祝你游玩愉快。]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> Minecraft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于个人备案心得</title>
+      <link href="/posts/7a45d360.html"/>
+      <url>/posts/7a45d360.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Thu Jul 31 2025 15:55:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]为什么我要备案大约在三月份的时候，我读了一篇关于“微信如何接入ai进行拟人格回复”的文章。那时，我有了一个疯狂的想法：如果把聊天记录丢给ai，是不是就能让她一直回复我了？（想到这里不禁泪目😭）这只是一个数据量是否足够大的问题。说干就干，我开始准备所需的条件。由于只需要微信回复，理论上来说，只要有一台远程登录的电脑挂着微信，并让ai在电脑上运行就可以了。后来，我又听说大学生可以领取优惠券免费使用阿里云的云服务器ecs。回想当时我的执行力真高，不像现在开了博客后连写篇文章的动力都没有😁。[图片]然而，由于服务器配置较低，运行微信非常卡顿😂。体验几天后，我放弃了这个计划。直到最近，我重新找回了博客，了解到可以通过套一层cdn来加速博客访问速度。毕竟这是加速访问最简单的方法之一。因此，我查阅了大量的资料了解cdn及其接入方法。在这个过程中，我也了解到了腾讯的edgeone计划，并通过不懈的努力，成功获得了两个激活码。拿到第一个激活码后，我首先测试了在全球区（不包含中国大陆）接入后的访问速度。实际上，效果并不太理想，基本上在500毫秒左右。最初我没有使用测速网站测试，我猜测这个访问速度大概是在新加坡、台湾、香港等地架设中转站。后来，在博客的欢迎访客栏目中看到“欢迎来自新加坡的访客”，证实了我的想法。（果然是臭节点）测试完全球区后，我觉得这并不算很理想。虽然免费，但家人告诉我国内网站的加载速度也不太理想。于是，我决定将cdn转回国内。抢到第二个激活码后，我在国内站的腾讯云激活了它，接下来我开始了国内站加速的旅程。国内站点加速与国际站点加速不同，最明显的区别是硬性要求的icp备案。在我的网站搭建方案中，我选择了最便宜的方案——githubpages+vercel来部署静态网站。如果不备案是没有问题的，但为了后续优化，备案逐渐成为硬性要求。在这里，我要感谢阿里云的服务器（白嫖计划）。如果没有它，或许我的备案就会被服务码卡住😔。[链接]备案流程以下内容摘自[链接]如果你的服务器不是部署在腾讯云等其他注册商，我建议你在阿里云备案。问就是被腾讯云的人工智障客服劝退。你需要准备以下材料：阿里云账号最坑的是一个账号只能有一个备案订单，你不完成先前的订单，后续都无法创建新订单。当然，你也可以取消先前的订单。阿里云服务器需要是包年的服务器，主要是为了获取备案服务码。至于服务器实际是否使用并不重要。你可以参考[链接]。域名可以是任何注册商的域名，比如我的是西部数码的域名。[链接]如何备案一般情况下，我们都是通过接入商（比如我使用的是阿里云）代备案的方式完成备案，我们需要按照通讯管理局（通管局）要求提交资料到接入商备案部门，由接入商备案部门对我们提交资料进行初审，当我们的资料通过初审后由接入商将我们提交的域名备案信息提交到当地的通讯管理局进行审批。通过阿里云初审后的短信通知[图片]通过阿里云初审后，马上又会收到通管局的短信，会要求你进行短信核验。[图片][链接]备案步骤简易流程：提供资料——接入商审批——通讯管理局审批——下发备案号——公布网站版权栏审批流程:接入商(初审;时间:1-2工作日；核验方式-电话&#x2f;短信核验)——通讯管理局（复审；时间：3-20工作日；核验方式：短信验证码核验）——下发备案号（短信&#x2f;邮件通知）各省通管局的审批时间也各不相同，具体你可以参考：[链接][链接]在此点名广西通管局备案材料简单明了，你准备好身份证即可😁，原本我的备案选择了广东，但是因为还是一名学生，所以被广东通管局要求的材料给卡住了（又是手持网站规划书又是居住证的），走了二十年弯路😭。想想自己的身份证是广西的，也就选择了广西，毕竟广西通管局的硬性要求也就是需要广西的身份证，正好对口。至于其他省份就需要各自的材料了。[链接]icp备案主要是关于网站的描述方面会有打回的风险,其实你可以使用deepseek为你生成一段网站的描述.[链接]网安备案网安备案相对于icp备案要简单不少,主要体现在步骤上我的建议是在你注册互联网安全管理服务平台时之前备好材料,比如说app公安一网通办(用于方便扫码登录以及实名验证),其次,手持身份证照,域名证书在进行网站基本信息步骤时,你需要留意一下网络接入服务商,域名注册服务商两处的填写[图片]以下各注册商的步骤或许会对你有所帮助[链接][链接](太偏僻了)祝你有所成功]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 备案 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>村中恬居有感</title>
+      <link href="/posts/86ed40d5.html"/>
+      <url>/posts/86ed40d5.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Mon Jul 21 2025 14:55:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[de7636c483f9c5b95b1904d7da8e53f766fa43bfafd4e189b6fde51d253dc4bf5c760b32eac8d6d0ebdd7c6280175365c4b10cb036dfcb8e1a8a6f5ff99170bc3aeb0c15ef7a2591b26f964505c0bbd3fbcc05c58506547dabc41fd81c20b917139d86ca753fa487b547c496e2c49e4fedcb7e128c847f0791782e50618629a639c24c2905938c1728d9c3365ee3c0ad3dc288122d1fc29b0e7268d181a748d23348cdc4388e20e6676fd712bfdcb442a78e52a8775f8567ec6bdf11e2ab4b01ffbd6087ac8263591019750f4acd7ff47d6386ead3662cfdadfe4a3a37d2a604775f4032412d11321ccf0d47b996ddbcabecdccbcd056996b37709d6a2589985afb2967bbe479aa9df6efa93c38539d618c73748ce052da4ce63e4a02b31e0aab47d08c3af6b232f445ff1b177a3eddf0d82e521a23494badbc33259164ee9759e2c20915ab0e5ed139335c7b9031131f87c226af37f73f006187892302c587a95d532c7e716288ddf9663ff63b5f4e2a0cc950b88c68d8aa13f3dc4e9427a511b48e9eda8e2648854aacb60a467282530be684943a43c20249d4ff135dfb00d16899a1002a7e4423b7632d130a6bb5c5a2d6fd01ebf9e5d3740d3cf4cba9c2556efbd74f8e0a86886a6ece1216cc951321787c604a88a334cf5d565e7853d7d05c64d247e7cd29fba588833d511d15eb0ce8c164a195f083f99392ff124cbb46e31898ac89b764505191cdb89bd32cd02d31a9e4044a7695bfc5e58954a1aa96a02d37b0014f5ba79f9187c0fdab77f53903da6bbe3edf721685b13789d5e1ff942573a5f0db16eb31ee94f58da057602cbea3f9a46930e364d4a58f9b51cb2d8b110cae3d47984cfd8ea443eccc60bd622043d55a2f02f2b274e3bc5bc5e2efd1d972e3e65571b8f7f8d3dfb334bdc2d4a80db7f276d4da2f067be1730aa5304fc08898126881c1c2d23637dbacddea297481ffb795defda261dda66cdc8162159512d2945d117b744444db51f8a60a69a7e320e9b435e6418d43e9c1c1b9ea6e93a21c0efbd651642e36676eb2183a8c7cda169876e9b2412f2f3e8fc81013e42d5ddac0baf7796f6679c30b969b0543cc56a03609d325dc0eb585a0651f5da8c7da96925a54e183ef46b9d33f27ac20a4c1dc0b0b82c6ac37fb513b87f8f62a316a10836927e9c1b1c91086b4c93de93867b56d826fc8a301041faa47876a6d8cea54ed537ce95bff2c0dc789092315facf4035a6dc46030013bc00eb831cbf13a9e1f6b974fa25cbe68a811be510fce62a64877cb76b5ac379655c90a899d85abd8bfb1f4c555e3c6bc7bd60a9905ef31cb14475e2ea66699af272ecda57e7ae9d86b55c977f1bd4c211be6e55c17f9d949e482813a1209e2491b728ce162da2b1bc7ff9935233ee18f510e674d2cbc3f82f53f93fc1977f0781348c655a6e85aac0e7f726116476c8e5431f5b516ff5bf457394294b572cf0d6bfc583ec85f0b66b65138399ffb4c0feca3e8b14adb223f8aac92382abbe2f8b57e2fb87eb8fb9f2c2378df906206a6e3ea936b55e0aef379fd90aa16ad8b37dce2a34849c39c69548e0ccaaf9b442c850854eb1cc63cc986df75feaf90eb5891dcaf947d6d6bc49cc6879cd5374f508b02b8b885561e556e95cfda0501aaa598fbfa38d0b10754a2e18d36595b4f0ddd3a806e5717f63a07a42df6948c4d4008ec76ba7ad423a52ae4e5f863ad9387f267ce2db64e195391a9fa10890064660c5e694530ba5667de95a5a81cfe9d21955567e98c67d5ad963ff9a39f304c31a597a8dd5aea8497014ddbf8e5dd68f8571c9181729080c94a6dbebb7db86cd0a6fc96c91be7b3f9feddb4c6a08a418b6a1a5c5990af0e4780b463a4c99b2a5d750cbd35033feba108fed6e187ff081ea9cb82e8cbb245fde6cceb19c6eb504c92940390dbff02f3e1bbfd2b6c98f1e294c73defe394ffd72d063aa5bc3979c5b55999e82ae01b92060b2c5fa789aae7ee99a7b4d8f24fb0c70834643eca75a821b0df8bda7253f1ba1f960ebc1dceea4f6fc796fcd9d092afde1ab261a90508ef9daf60d339eccd6cca7df8c9713205ecb0fb7a3e9830edfaffd8c7ed9d9e482e2e584485e8cac1c0982aec472f6732546979d3b89803715e338cdb767e65356ee7d5d3c052402d72ce48d98cca9d5cffa8f6c28452bca6914d69a1c24bd102424161a13b1c93bfe89e094bb1d14f0bf4323d6f190d93d4f583d4f7d2aac5cb74dedd7a7cf91e76c0d7111d1c4e13b97a71ea41546492d4189689c828de277747f9062a0341ff8828832e10cadbeec3ceb78f6b03089faf0720416585bbe548df776485ec0cd229414894a07bdce9d79822c3d970b36a505dc7b55585c1900dd2e4926e73c6357fb65a14a2a6527044a8793789745510b850cfc4bdcf0aa1ef3ad9943b583d91a335af600533e13b99d41ecf9b72e7d985c447cc3909b7a37c5f7d6f20e61609c69ecb92f6b16e948ff201cb77e77ea3905aa9cbf9f7f77687979161eedc804df6035f29e1846d457848d995b12960cbb6a5d2fc8e6f6d6ba655b7ec146d325a4e82447737e7e88bc4742bab74c447624f41fa6478db138d470303fd99b362bc6e30febc073c00dc137771ce239bfa5bd7d67294cb0cb6a5a548fd1238d539c5be8e327fb5a47435435be3cd224f91d3df62a7d3668ad870df593157d55291ce4b27f9f967646c3a212c7c4c412462af18bff103d901ff0a5e36b84c5355c57163e710bfa02cae375e052faeb6a0d62a7ca2d0591487ca36482e4953766c0e19c3de8c3484f6938d648a491872378e1ea2a847fdceb61b571ccc0819e85b998e59746c695e9d24b226dbacdf50775aab2de71425bb3cc1b4e57c0bfd80897cd60a8bce1580994489bb340a1539a54ad7e0e10963f63eb1c40f54456dbf6799c7f0fddd04f6d7e8577a144ed8c9a25f000ecc5e1c9b6d6dab1b89a833eb0a81ce1bcfc38056fa2ca4970d9f3bd999489ed02c51b240d3f86c23f3d42fc466f452a4b16b7c9b696ed48ad5f477d49751cadfc4a4f9aeace9430acd77094375541003a53f55e61fb07459ae0c0c8be27b01f5bd79b8e4780b0654c9687578c19c921025ecd48b1d770e28d7cff18fdecfac71544b9c6de6f1b301fb4603520412323d7a2d2adec42215b35cca7b85f0ab2e83bbf1346cf7114354691180a8164dce178b4df57c6d216852c6dee805499a875c6de62619c604f11d3b17b4c9d26e763d9226203f7f6512d85a19b30a2d7d669b4cec2a92d2a36018aef2df364332a5ca400040e23edcc28dd5a772f982b00463d2b85736d2ec588b47d9fc4813fc7e58f2489b081605df547628bf180f110952c0a5eca3a64671b3ce462c170d5cb2bca0b555b30fe4d9fe0caa4730c11b14e513f6d7f7379f9d07d710e76de05ad01987c6f2562f1bd5d0c30a314b208b17b2987c791f6aa9248ce0261f4111e8d4cedceedddbed7949d500ebef92922b2bfc7075991511395c9c1cf8a2201674b0ff18d30c771c3f3f20cb22381bbe785ab6ca74ab848b73b8ac523f5ec51322f40f1338d06db132d09b509bef874641d16e2eb11f55aa2ad5336186462c051524972dc4a04be4827e8899899f6fdfec324de2a3271f05b3a89086525b0bd6690bce63f74f7b68ffed6603eff734adce324439c1c253b863c88b586a482f50160ac34846be4e93900929ce0e6af806456b9bb71c76a112be8365dafb37ca346e9d0b0dac07469b71a76047c4bbf4902937f394fcc022a9897500c8715e7ba4d43765f206e0235938c8c00344e5643e4bf64746b65d76583c603cede0cf79794b321005e0397a35f0e1fa401c7ad294278e0af08f48bf51ab7a4a40d02057effd5b74ba6d936ee42504899c8ba214076389554b4d84a8104f459db042afbedaf867be0ddedb43ae325d7231296ae0996346b7174652029cdae5f3247f37b773895f4d2fa7293bf886d887af03b48e9b7cc26c62165e2aae341b59ce13fca138b0324b5e1fdb510b609a2a329f886dd1ce68847acd25c897fe150212339a89949addbb5a25b78e4c82818215d6e0538db7beebe0ae247313688e82c33e09036b34fd100dbe05f30c364f820cec59dc2f04021ddd1a9af0ed2e838638fd1c3073948ee707d9aa29ee532dc9d67400cc1daef1926c0ec27daf2ae822b1c1ea03e8c6aa90238207b52a790f29a304075885d7ef1a15d381abab0263f40e788f93f4fe6f41840af37465fa3e5c22f0cbad2c0f34041589aedc722c12065b678df739fe12c3775bc13c1418a399e669de280c192941ceefd4695afd4e270014677bc17875d7f5d16efda73a9f39f9cc13c3e92df43fa8ffe66e70db562ae1309b6f11510615e5ef005fd906136291cad1d66fc09b44ce4f273548d4bb590b03aeb9fc6c21c2149df09b72d6bd0fba998ea5205c8e42b09c0adc31bfa73cded8167da52a0eecaf2ddbd5d196f8f7c3512a107dfa88e2af4116dcd5d78e32a16d405108d0dc8816218d064af01de2ebe1a7b79cceb342b92be2f207ee048255aa14461697196d650bf7c53198374c2fb4992faad304252f26bab39d66d5d5211aeea15493931c8f3082dd26369a1108d9b3ead982184bf7c02d1ebf3f1c5f80cf10f58d89a757b10577a99a46f047b88b11fb4caa759384edaeaacdf1acf1e97d7c3a7832552bcb313c06047c6c696e8ab9f2c5502c9fc5b82c52a4e0098f8af5ab59fb09ac98a12bb7c2184630de2581ca41345275c32e5f391be64396a26d495aab75d2806c64dbc2f4061a8a81db87046a87f365b2ddaae5a11eb36f207478234cc076cda704afbf878a8c8fcc0243a5bc7106ba672559017bd97bd202d37c21b58e88ce720f0e4fa24e8b80930703e969b9069a4b6312de9f773998c7a77abb9bcd48ae13802c5f4a9255856d57658f7e3a79abc78a414dd3e86e02dbfad4782d0385b3239934fa867ee8697741f91cf5e243e69e8461319113e16c2d8e973475d4f6ee5f3c86cf30732843d81d6a27be1d81de12298557941dfa2280764afb9d3e8786afff1af686751031178c73097f502c1ee1cc0a3bb26b6b996839889d626a224b7d8e7de0cd7be27844330acd676eb0ba239899b74cae5c24d49d99cf9b4e7e8ace1b3d7e34713fcaa4ce0a8a839e040bcd84d186e393e9251375b9748f44199690e861e4f49bb8c4cbd9eb999b7b443088dfdcf4f9746cf2249298dee421f8a029240f072567086f4e4c707ec939195253ff538210d7168edeafb546793cb90de65587617ee9dcbd678a6fa6772277238a92f863f31435c6af9df64deb3d4981eaccd36c6de4c82de40830b571cd75077f8e1853d1d91290cb1ea80e0c6fb9e9dc8fb431f0f7dd7ca8fbaf2b253f4c2e1e75d8fae5ac685b9549156381ea8050487c5cf39cf6bec612c9ea13acf14a12eaafb513aa4e5289b2cb4d411302cab2329814ffde4a50cc4a725573ad2d1fedea70a56a53c52a08775bfb2e16951cb7236db19eb007725fc0a723618ff307e0990d7522cb5fc2962e85842c5b2d9cd34c62bd9503d366f46829b17046e5ff5377c86320c282bad532b7e915f793303f5d9311c6df308e17e80eb2838650c5ade6073ecdf6337a6151f52056adok你好👋,文章已过公示期,常规公示期为十天,请输入密码查看本文。]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+          <category> 加密🔐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 日记 </tag>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> 碎碎语 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>本地翻译模型部署(个人随笔)</title>
+      <link href="/posts/9fcec3f.html"/>
+      <url>/posts/9fcec3f.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Sat Jul 12 2025 05:18:47 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]一、硬件准备与系统配置[链接]1.硬件要求检测[链接]显存检测方法：win+r→输入dxdiag右键桌面→显示设置→高级显示器设置→显示器属性任务管理器→性能→gpu最低配置建议：共享显存≥8gb运行内存≥16gbintelarc&#x2f;irisxe系列显卡(更符合本人使用轻薄本的情景)[链接]2.驱动更新下载地址：[链接]安装注意事项：[代码块][代码块][链接]3.模型选择建议模型名称显存要求适用场景性能表现deepseek-r1:8b8gb日常问答&#x2f;文本处理⭐⭐⭐⭐deepseek-coder-v2:16b16gb编程&#x2f;翻译⭐⭐⭐⭐⭐nomic-embed-text6gb浏览器增强⭐⭐⭐💡选择建议：日常问答推荐deepseek-r1:8b，翻译需求选择deepseek-coder-v2:16b实际体验下来笔记本能飞8b模型也是勉强[链接]二、ollama安装与配置安装[链接],以下内容属于官网版ollama的安装指南内容,下载优化版可以省略以下步骤.[链接]1.自定义安装路径操作步骤：创建目标目录（如d:\apps\ollama\）终端执行安装命令：powershell[代码块][代码块][链接]2.验证安装powershell[代码块][代码块][链接]3.模型下载与管理powershell[代码块][代码块][链接]三、浏览器集成方案[链接]1.pageassist插件配置安装[链接],[链接]打开扩展→rag设置→文本嵌入模型→nomic-embed-text下载依赖模型：powershell[代码块][代码块][链接]2.沉浸式翻译设置api配置：[代码块][代码块]实际体验下来,qwen3和qwen2.5也挺适合翻译跨域设置：系统操作windows控制面板→系统属性→环境变量→新建：ollama_host=0.0.0.0ollama_origins=*macos终端执行：launchctlsetenvollama_origins&quot;*&quot;linux终端执行：ollama_origins=&quot;*&quot;ollamaserve[链接]四、常见问题解决[链接]1.性能优化技巧[链接]性能调优你可以尝试如下设置来进行性能调优：[链接][链接]环境变量sycl_pi_level_zero_use_immediate_commandlists环境变量sycl_pi_level_zero_use_immediate_commandlists用于控制是否使用immediatecommandlists将任务提交到gpu。你可以尝试将sycl_pi_level_zero_use_immediate_commandlists设为1或0以找到最佳性能配置。你可以通过如下步骤，在启动ollamaserve之前启用sycl_pi_level_zero_use_immediate_commandlists（如果ollamaserve已经在运行，请确保先将其停止）：对于windows用户：打开命令提示符，并通过cd/dpath\to\extracted\folder命令进入解压后的文件夹在命令提示符中设置setsycl_pi_level_zero_use_immediate_commandlists=1通过运行start-ollama.bat启动ollamaserve对于linux用户：在终端中输入指令cdpath/to/extracted/folder进入解压后的文件夹在终端中设置exportsycl_pi_level_zero_use_immediate_commandlists=1通过运行./start-ollama.sh启动ollamaserve[链接]节省vram你可以通过在启动ollamaserve之前设置环境变量ollama_num_parallel为1来节约显存，步骤如下（如果ollamaserve已经在运行，请确保先将其停止）：对于windows用户：打开命令提示符，并通过cd/dpath\to\extracted\folder命令进入解压后的文件夹在命令提示符中设置setollama_num_parallel=1通过运行start-ollama.bat启动ollamaserve对于linux用户：在终端中输入指令cdpath/to/extracted/folder进入解压后的文件夹在终端中设置exportollama_num_parallel=1通过运行./start-ollama.sh启动ollamaserve对于moe模型（比如qwen3:30b），你可以通过在启动ollamaserve之前设置环境变量ollama_set_ot把experts移到cpu运行上来节约显存（如果ollamaserve已经在运行，请确保先将其停止）：对于windows用户：打开命令提示符，并通过cd/dpath\to\extracted\folder命令进入解压后的文件夹在命令提示符中设置setollama_set_ot=&quot;exps=cpu&quot;把所有的experts放在cpu上；也可以通过设置正则表达式，如setollama_set_ot=&quot;(2[4-9]|[3-9][0-9])\.ffn_.*_exps\.=cpu&quot;把24到99层的experts放到cpu上通过运行start-ollama.bat启动ollamaserve对于linux用户：在终端中输入指令cdpath/to/extracted/folder进入解压后的文件夹在终端中设置exportollama_set_ot=&quot;exps=cpu&quot;把所有的experts放在cpu上；也可以通过设置正则表达式，如exportollama_set_ot=&quot;(2[4-9]|[3-9][0-9])\.ffn_.*_exps\.=cpu&quot;把24到99层的experts放到cpu上通过运行./start-ollama.sh启动ollamaserve[链接]2.模型使用建议[代码块][链接]3.资源获取[链接][链接][链接]]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 科技 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>星露谷游玩使用的Mod</title>
+      <link href="/posts/a489953f.html"/>
+      <url>/posts/a489953f.html</url>
+      <cover>/img/default_cover.jpg</cover>
+      <date>Fri Jul 11 2025 04:18:00 GMT+0000</date>
+      
+        <content type="html"><![CDATA[[链接]星露谷物语mod备份29713模组管理器128328smapi5098左下角菜单小齿轮239npc位置[链接]github下载541查找一切(有汉化)8897可见鱼(有汉化)1232小马减肥3109自动门15223穿过作物20391跳过钓鱼(有汉化)518处处开箱(有汉化)963骷髅矿洞电梯27489邮件发礼(有汉化)29035自动吃饭29058自动切斧29391自动收割29611升级工具可借临时工具20943移动一切22163共享经验21001礼物助手8329怪物血条6338模组更新器16233简洁社交26194快速存档169时间速度12158头像铭牌22539资源存储3518时显修改(有汉化)7403坐着休息22751经验条样式修改10384快速存箱(有汉化)34257批量破水晶7500处处唤马]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何移植Solitude主题中的十年之约进度条至anzhiyu主题</title>
+      <link href="/posts/5498433.html"/>
+      <url>/posts/5498433.html</url>
+      <cover>https://img.gbfun.cc/file/blog/FW2j7Gd2.webp</cover>
+      <date>Sun Jun 29 2025 17:04:01 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。文章更新日志202506-30初稿08-25修改tenyear.pug模块日期的显示逻辑,避免由于系统语言等因素影响[链接]前言在逛[链接]大佬的博客时,本着偷窥人家隐私为目的,去看看大佬的设计时,发现之前用着solitude主题时候一个设计比较美丽的进度条–十年之约[图片]随后我也想着要不把这个进度条搬过来吧,就安置在原solitude主题的模块位置–关于页面中间处,说干就干,之前琢磨这么久的主题不就是为了偷代码学习嘛[链接]修改以下内容涉及的文件about.pug(重点备份)tenyear.pug(新建)tenyear.styl(新建)首先需要决定十年之约模块的运作方式,路径anzhiyu&gt;layout&gt;includes&gt;widget,新建tenyear.pug文件自8月25日后,tenyear.pug的代码逻辑已修改,之前已部署的请自行修改为后面的内容,往后的可以忽略本条提示,放心部署6月30日的内容已作废tenyear.pug的内容如下:[代码块][代码块]8月25日内容请部署这一部分tenyear.pug内容如下,相比于初版,修改了几处内容:通过formatdate()函数在pug渲染阶段将日期格式化成yyyy/m/d的形式，这样设置的显示不会受系统语言影响,上一个版本会有概率形成m/d/yyyynewdate(starttimeelement.textcontent)修改为newdate(starttimeelement.dataset.date)[代码块][代码块]决定完模块运作方式还需要定义模块样式.路径anzhiyu&gt;source&gt;css&gt;_page下新建tenyear.styltenyear.styl内容如下:[代码块][代码块]其中.process.background-color是进度条前半的颜色,即达到进度.我在此处修改为了#f25d8e粉红色,与打赏按钮的颜色一致..tenyear-timeline.background-color为进度条后半的颜色,即剩余进度.我在此处修改为了var(--anzhiyu-background)安知鱼的背景颜色,主要是为了适配暗色模式,如果单纯的设计为白色,会导致暗色模式下进度条后半为白色,瞎眼剩余可修改样式可以自行琢磨,基本只用修改这两处,颜色适配方面,因为我用不到其他的颜色修改与字体大小,所以我将颜色原var(--efu--color--)修改为了var(--anzhiyu--color),主要是efu的颜色未定义,需要做出修改,加之我的技术力也不允许我进行修改.路径anzhiyu&gt;layout&gt;includes&gt;page&gt;about.pug需要做出三处修改.内容修改如下:顶部判定条件加入,[代码块][代码块]添加tenyear模块,这里我选择放置在打赏模块与音乐喜好模块之间,[代码块][代码块]进度函数,8-25留之前对这一部分缺少了介绍,这一部分内容其实就是脚本的运行计算逻辑,所以你需要注意的是将本内容添加至script(*defer*).的后方,我的建议是直接甩在全内容的最后方,只需要注意缩进即可[代码块][代码块]4.模块开关,路径source&gt;_data&gt;about.yml添加,[代码块][代码块]我选择放置在打赏模块之上.最后三连即可见.]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何在安知鱼主题中加入无聊湾</title>
+      <link href="/posts/cd9cbdaa.html"/>
+      <url>/posts/cd9cbdaa.html</url>
+      <cover>https://img.gbfun.cc/file/blog/C0IQmdtJ.webp</cover>
+      <date>Sun Jun 29 2025 06:34:37 GMT+0000</date>
+      
+        <content type="html"><![CDATA[进行主题修改前必看博客魔改有风险，请务必备份你的原代码因为.pug和.styl以及.yml等对缩进要求较为严格，请尽量不要使用记事本等无法提供语法高亮的文本编辑器进行修改。本文涉及修改内容会以diff代码块进行标识,复制时请不要忘记删除前面的+,-符号本帖基于anzhiyu主题进行修改方案编写，因此请读者优先掌握[链接]的内容后再来进行魔改。[链接]前言轮到我来水一篇大文章,窃喜有一天无聊了起来,看见大家的博客里面添加有一些有趣的元素,其中就以无聊湾最为醒目,有的放置在侧边栏,也有的放置在博客页脚[图片]看起来是个十分无趣(有趣)的项目,而我的安知鱼主题中基本所有的元素塞满了,所以我想了想放在博客底部是否可行,不过本人没什么代码基础,只能借助源代码怎么写的,就跟着怎么仿照元素搓一个开关出来,代码写的不好看,见谅.[图片][链接]修改首先,得加入[链接]获取统计api(在我看来也是一个统计作用),找到themes&gt;anzhiyu&gt;layout&gt;includes&gt;footer.pug[代码块][代码块]随后找到_config.anzhiyu.yml进行添加代码缺失的元素[代码块][代码块]最后执行三连享受无聊吧🥱]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 主题修改 </tag>
+            
+            <tag> anzhiyu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>什么是Markdown 以及怎么写才是更好的排版.</title>
+      <link href="/posts/edc6e88.html"/>
+      <url>/posts/edc6e88.html</url>
+      <cover>https://img.gbfun.cc/file/blog/hcT8I1vv.webp</cover>
+      <date>Sat Jun 21 2025 03:17:48 GMT+0000</date>
+      
+        <content type="html"><![CDATA[为了方便自己在写博文的时候参考,特地为自己安排了markdown语法的教程一环🤐,翻译了一下文档,便于国人理解,虽然单词都挺基础也罢[链接]markdown入门基础[链接]markdown是什么markdown是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。markdown由johngruber于2004年创建，如今已成为世界上最受欢迎的标记语言之一。专注于文字内容；纯文本，易读易写，可以方便地纳入版本控制；语法简单，没有什么学习成本，能轻松在码字的同时做出美观大方的排版。使用markdown与使用word类编辑器不同。在word之类的应用程序中，单击按钮以设置单词和短语的格式，并且，更改立即可见。而markdown与此不同，当你创建markdown格式的文件时，可以在文本中添加markdown语法，以指示哪些单词和短语看起来应该有所不同。例如，要表示标题，只须在短语前面添加一个井号即可（例如，#headingone）。或者要加粗一个短语，只须在短语前后各加两个星号即可（例如，**thistextisbold**）。可能需要一段时间才能习惯在文本中看到markdown语法，尤其是如果你已习惯了所见即所得的应用程序。以下屏幕截展示了markdown文件在[notepad++文本编辑器]中显示的效果。[图片]你可以使用文本编辑器为纯文本文件添加markdown格式的元素。或者，你也可以安装针对macos、windows、linux、ios和android操作系统的markdown应用程序。或者还可以使用一些基于web的应用程序用于markdown编写。依赖于你所使用的应用程序，你可能无法实时预览格式化的文档。但是没关系。[链接]，markdown的语法被设计为可读性强且不显眼，因此即使markdown文件中的文本未经过渲染也易于阅读。markdown语法的首要设计目标是尽可能易读。基于这个目标，markdown格式的文档能够以纯文本形式原样发布，而不会看起来像被填满了标签或格式化指令。[链接]为什么要使用markdown？当你可以通过按下界面中的按钮来设置文本格式时，为什么还要使用markdown来书写呢？使用markdown而不是word类编辑器的原因有：markdown无处不在。stackoverflow、csdn、掘金、简书、gitbook、有道云笔记、v2ex、光谷社区等。主流的代码托管平台，如github、gitlab、bitbucket、coding、gitee等等，都支持markdown语法，很多开源项目的readme、开发文档、帮助文档、wiki等都用markdown写作。markdown是纯文本可移植的。几乎可以使用任何应用程序打开包含markdown格式的文本文件。如果你不喜欢当前使用的markdown应用程序了，则可以将markdown文件导入另一个markdown应用程序中。这与microsoftword等文字处理应用程序形成了鲜明的对比，microsoftword将你的内容锁定在专有文件格式中。markdown是独立于平台的。你可以在运行任何操作系统的任何设备上创建markdown格式的文本。markdown能适应未来的变化。即使你正在使用的应用程序将来会在某个时候不能使用了，你仍然可以使用文本编辑器读取markdown格式的文本。当涉及需要无限期保存的书籍、大学论文和其他里程碑式的文件时，这是一个重要的考虑因素。[链接]工欲善其事，必先利其器markdown入门的最佳方式就是多使用它。由于有大量免费工具的存在，上手markdown是很方便的。比较遗憾的一点是各平台可能采用不同语言实现的markdown解析引擎，或采用同一解析引擎的不同版本，而且可能有不同程度的定制与扩展，这导致在不同平台上使用markdown写作时体验并不完全一致。不过幸好对于大家公认的一些标准语法，各家都是支持的。你甚至都不需要下载任何程序，就可以使用[链接]来编写markdown。进入其站点就可以开始在左侧窗格中书写了。渲染后的文档在右侧窗格预览。阅读本指南时，你可以打开[链接]。这样，你就可以一边学习markdown语法一边练习了。熟悉markdown之后，再选择一个顺手的markdown的应用程序更推荐入门的typora,使用体验非常重要[链接]markdown语法速查表[链接]总览markdown速查表提供了所有markdown语法元素的基本解释。如果你想了解某些语法元素的更多信息，请参阅更详细的[链接]和[链接].[链接]基本语法这些是johngruber的原始设计文档中列出的元素。所有markdown应用程序都支持这些元素。元素markdown语法[链接]#h1##h2###h3[链接]**boldtext**[链接]*italicizedtext*[链接]&gt;blockquote[链接]1.firstitem2.seconditem3.thirditem[链接]-firstitem-seconditem-thirditem[链接]code[链接]---[链接][title](https://www.example.com)[链接]![alttext](image.jpg)[链接]扩展语法这些元素通过添加额外的功能扩展了基本语法。但是，并非所有markdown应用程序都支持这些元素。元素markdown语法[链接]&#96;[链接]&lt;/code&gt;&lt;br&gt;&lt;code&gt;&#123;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&quot;firstname&quot;:&quot;john&quot;,&lt;/code&gt;&lt;br&gt;&lt;code&gt;&quot;lastname&quot;:&quot;smith&quot;,&lt;/code&gt;&lt;br&gt;&lt;code&gt;&quot;age&quot;:25&lt;/code&gt;&lt;br&gt;&lt;code&gt;&#125;&lt;/code&gt;&lt;br&gt;&lt;code&gt;[链接]here’sasentencewithafootnote.[^1][^1]:thisisthefootnote.[链接]###mygreatheading&#123;#custom-id&#125;[链接]term:definition[链接]~~theworldisflat.~~[链接]-[x]writethepressrelease-[]updatethewebsite-[]contactthemedia[链接]markdown基本语法[链接]markdown标题语法[链接]示例✅要创建标题，请在单词或短语前面添加井号(#)。#的数量代表了标题的级别。例如，添加三个#表示创建一个三级标题(&lt;h3&gt;)(例如：###标题)。理论可以无限续#号,创无数个标题markdown语法html预览效果#一级标题&lt;h1&gt;一级标题&lt;/h1&gt;一级标题##二级标题&lt;h2&gt;二级标题&lt;/h2&gt;二级标题###三级标题&lt;h3&gt;三级标题&lt;/h3&gt;三级标题####四级标题&lt;h4&gt;四级标题&lt;/h4&gt;四级标题#####五级标题&lt;h5&gt;五级标题&lt;/h5&gt;五级标题######六级标题&lt;h6&gt;六级标题&lt;/h6&gt;六级标题[链接]可选语法🔃还可以在文本下方添加任意数量的==号来标识一级标题，或者--号来标识二级标题。反正我没试出来,可能是typora不支持?markdown语法html预览效果一级标题====&lt;h1&gt;一级标题&lt;/h1&gt;一级标题二级标题----&lt;h2&gt;二级标题&lt;/h2&gt;二级标题[链接]常见错误❌不同的markdown应用程序处理#和标题之间的空格方式并不一致。为了兼容考虑，请用一个空格在#和标题之间进行分隔。✅这样做❌不要这样做#这是一级标题#这是一级标题[链接]markdown段落语法[链接]示例✅要创建段落，请使用空白行将一行或多行文本进行分隔。说实话我更喜欢用br语法来切行,反正阅读习惯都是换行即段(bushi)markdown语法html预览效果我热衷于使用markdown.我想从现在开始我会用它来处理我的所有文档.&lt;p&gt;我热衷于使用markdown.&lt;/p&gt;&lt;p&gt;我想从现在开始我会用它来处理我的所有文档.&lt;/p&gt;我热衷于使用markdown.我想从现在开始我会用它来处理我的所有文档.[链接]常见错误❌不要用空格或制表符缩进段落。red✅这样做❌不要这样做不要在段落前添加制表符或空格。.保持行左对齐，就像这样.这可能会导致格式问题.不要在段落前添加制表符或空格.[链接]markdown换行语法[链接]示例✅在一行的末尾添加两个或多个空格，然后按回车键,即可创建一个换行(&lt;br&gt;)。markdown语法html预览效果这是第一行.接着这是第二行.&lt;p&gt;这是第一行.&lt;br&gt;接着这是第二行.&lt;/p&gt;这是第一行.接着这是第二行.[链接]常见错误❌几乎每个markdown应用程序都支持两个或多个空格进行换行，称为结尾空格（trailingwhitespace)的方式，但这是有争议的，因为很难在编辑器中直接看到空格，并且很多人在每个句子后面都会有意或无意地添加两个空格。由于这个原因，你可能要使用除结尾空格以外的其它方式来换行。幸运的是，几乎每个markdown应用程序都支持另一种换行方式：html的&lt;br&gt;标签。(真神)为了兼容性，请在行尾添加“结尾空格”或html的&lt;br&gt;标签来实现换行。还有两种其他方式我并不推荐使用。commonmark和其它几种轻量级标记语言支持在行尾添加反斜杠(\)的方式实现换行，但是并非所有markdown应用程序都支持此种方式，因此从兼容性的角度来看，不推荐使用。并且至少有两种轻量级标记语言支持无须在行尾添加任何内容，只须键入回车键（return）即可实现换行。✅这样做❌不要这样做第一行后带有两个空格.接着起下一行.在第一行html标签后使用.&lt;br&gt;接着起下一行.第一行后带有反斜杠号.\接着起下一行.第一行后没带任何标签.接着起下一行.[链接]markdown强调语法通过将文本设置为粗体或斜体来强调其重要性。[链接]粗体（bold）[链接]示例✅要加粗文本，请在单词或短语的前后各添加两个星号（asterisks）或下划线（underscores）。如需加粗一个单词或短语的中间部分用以表示强调的话，请在要加粗部分的两侧各添加两个星号（asterisks）。markdown语法html预览效果我真爱用**粗体**.我真爱用&lt;strong&gt;粗体&lt;/strong&gt;.我真爱用粗体.我真爱用__粗体__.我真爱用&lt;strong&gt;粗体&lt;/strong&gt;.我真爱用粗体.爱**是**勇敢的爱&lt;strong&gt;是&lt;/strong&gt;勇敢的爱**是勇敢的[链接]常见错误❌markdown应用程序在如何处理单词或短语中间的下划线上并不一致。为兼容考虑，在单词或短语中间部分加粗的话，请使用星号（asterisks）。✅这样做❌不要这样做爱**是**勇敢的爱__是__勇敢的[链接]斜体（italic）[链接]示例✅要用斜体显示文本，请在单词或短语前后添加一个星号（asterisk）或下划线（underscore）。要斜体突出单词的中间部分，请在字母前后各添加一个星号，中间不要带空格。markdown语法html预览效果斜体文字真是*妙不可言*.斜体文字真是&lt;em&gt;妙不可言&lt;/em&gt;.斜体文字真是妙不可言.斜体文字真是_妙不可言_.斜体文字真是&lt;em&gt;妙不可言&lt;/em&gt;.斜体文字真是妙不可言.一声*猫*叫一声&lt;em&gt;猫&lt;/em&gt;叫一声猫叫[链接]常见错误❌要同时用粗体和斜体突出显示文本，请在单词或短语的前后各添加三个星号或下划线。要加粗并用斜体显示单词或短语的中间部分，请在要突出显示的部分前后各添加三个星号，中间不要带空格。✅这样做❌不要这样做一声*猫*叫一声_猫_叫[链接]粗体（bold）和斜体（italic）[链接]示例✅要同时用粗体和斜体突出显示文本，请在单词或短语的前后各添加三个星号或下划线。要加粗并用斜体显示单词或短语的中间部分，请在要突出显示的部分前后各添加三个星号，中间不要带空格。markdown语法html预览效果这段文字***真的很重要***.这段文字&lt;strong&gt;&lt;em&gt;真的很重要&lt;/em&gt;&lt;/strong&gt;.这段文字*真的很重要*.这段文字___真的很重要___.这段文字&lt;strong&gt;&lt;em&gt;真的很重要&lt;/em&gt;&lt;/strong&gt;.这段文字*真的很重要*.这段文字__*真的很重要*__.这段文字&lt;strong&gt;&lt;em&gt;真的很重要&lt;/em&gt;&lt;/strong&gt;.这段文字*真的很重要*.这段文字**_真的很重要_**.这段文字&lt;strong&gt;&lt;em&gt;真的很重要&lt;/em&gt;&lt;/strong&gt;.这段文字*真的很重要*.这是真的***非常***重要的文字.这是真的&lt;strong&gt;&lt;em&gt;非常&lt;/em&gt;&lt;/strong&gt;重要的文字.这是真的***非常***重要的文字.[链接]常见错误❌markdown应用程序在处理单词或短语中间添加的下划线上并不一致。为了实现兼容性，请使用星号将单词或短语的中间部分加粗并以斜体显示，以示重要。✅这样做❌不要这样做这是真的***非常***重要的文字.这是真的___非常___重要的文字.[链接]markdown引用语法[链接]单个段落的块引用要创建块引用，请在段落前添加一个&gt;符号。[代码块][代码块]渲染效果如下所示：dorothy跟着她穿过她城堡里许多漂亮的房间。[链接]多个段落的块引用块引用可以包含多个段落。为段落之间的空白行添加一个&gt;符号。[代码块][代码块]渲染效果如下：dorothy跟着她穿过她城堡里许多漂亮的房间。女巫吩咐她清洗锅碗瓢盆，打扫地板，并用木头保持炉火燃烧。[链接]嵌套块引用块引用可以嵌套。在要嵌套的段落前添加一个&gt;&gt;符号。[代码块][代码块]渲染效果如下：dorothy跟着她穿过她城堡里许多漂亮的房间。女巫吩咐她清洗锅碗瓢盆，打扫地板，并用木头保持炉火燃烧。[链接]带有其它元素的块引用块引用可以包含其他markdown格式的元素。并非所有元素都可以使用，你需要进行实验以查看哪些元素有效。[代码块][代码块]渲染效果如下：[链接]本季度业绩收获颇丰收入超出了图表的范围.利润比以往任何时候都要高.一切都在按照计划进行下去[链接]markdown列表语法可以将多个条目组织成有序或无序列表。[链接]有序列表要创建有序列表，请在每个列表项前添加数字并紧跟一个英文句点。数字不必按数学顺序排列，但是列表应当以数字1起始。markdown语法html预览效果1.第一项2.第二项3.第三项4.第四项&lt;ol&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;/li&gt;&lt;li&gt;第四项&lt;/li&gt;&lt;/ol&gt;第一项第二项第三项第四项1.第一项1.第二项1.第三项1.第四项&lt;ol&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;/li&gt;&lt;li&gt;第四项&lt;/li&gt;&lt;/ol&gt;第一项第二项第三项第四项1.第一项8.第二项3.第三项5.第四项&lt;ol&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;/li&gt;&lt;li&gt;第四项&lt;/li&gt;&lt;/ol&gt;第一项第二项第三项第四项1.第一项2.第二项3.第三项1.缩进项2.缩进项4.第四项&lt;ol&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;ol&gt;&lt;li&gt;缩进项&lt;/li&gt;&lt;li&gt;缩进项&lt;/li&gt;&lt;/ol&gt;&lt;/li&gt;&lt;li&gt;第五项&lt;/li&gt;&lt;/ol&gt;第一项第二项第三项缩进项缩进项第五项[链接]常见错误❌commonmark和其他一些轻量级标记语言允许您使用括号())作为分隔符（例如，1）第一项），但并非所有markdown应用程序都支持这一点，因此从兼容性的角度来看，这不是一个很好的选择。为了兼容性，请仅使用英文句点。✅这样做❌不要这样做1.第一项2.第二项1)第一项2)第二项[链接]无序列表要创建无序列表，请在每个列表项前面添加破折号(-)、星号(*)或加号(+)。缩进一个或多个列表项可创建嵌套列表。markdown语法html预览效果-第一项-第二项-第三项-第四项&lt;ul&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;/li&gt;&lt;li&gt;第四项&lt;/li&gt;&lt;/ul&gt;第一项第二项第三项第四项*第一项*第二项*第三项*第四项&lt;ul&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;/li&gt;&lt;li&gt;第四项&lt;/li&gt;&lt;/ul&gt;第一项第二项第三项第四项+第一项+第二项+第三项+第四项&lt;ul&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;/li&gt;&lt;li&gt;第四项&lt;/li&gt;&lt;/ul&gt;第一项第二项第三项第四项-第一项-第二项-第三项-缩进项-缩进项-第四项&lt;ul&gt;&lt;li&gt;第一项&lt;/li&gt;&lt;li&gt;第二项&lt;/li&gt;&lt;li&gt;第三项&lt;ul&gt;&lt;li&gt;缩进项&lt;/li&gt;&lt;li&gt;缩进项&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;第五项&lt;/li&gt;&lt;/ul&gt;第一项第二项第三项缩进项缩进项第五项[链接]常见错误❌markdown各应用对在同一列表中使用不同分隔符的处理方式并不统一。为保证兼容性，请不要在同一个列表里混用分隔符—-选定一种并跟着用下去。✅这样做❌不要这样做-第一项-第二项-第三项-第四项+第一项*第二项-第三项+第四项[链接]在列表中嵌套其他元素要在保留列表连续性的同时在列表中添加另一种元素，请将该元素缩进四个空格或一个制表符，如下例所示：[链接]段落[代码块][代码块]渲染效果如下：这是第一个列表项这里是第二个列表项。我需要在第二个列表项下方添加另一个段落。接着这是第三个列表项。[链接]引用块[代码块][代码块]渲染效果如下：这是第一个列表项。这里是第二个列表项。在第二个列表项下方放一个引用块看起来不错。接着这是第三个列表项。[链接]代码块[链接]通常采用四个空格或一个制表符缩进。当它们被放在列表中时，请将它们缩进八个空格或两个制表符。[代码块][代码块]渲染效果如下：打开文件。在21行找到以下代码块：[代码块][代码块]更新标题以匹配您的网站名称。[链接]图片[代码块][代码块]渲染效果如下：打开包含linux吉祥物的文件。为它的可爱惊叹不已。[图片]关闭文件。[链接]列表你可以嵌套一个无序列表在一个有序列表中，或者反过来。[代码块][代码块]渲染效果如下：第一项第二项第三项缩进项缩进项第四项[链接]markdown代码语法要将单词或短语表示为代码，请将其包裹在反引号(`)中。markdown语法html预览效果在命令提示符中,输入nano.在命令提示符中,输入&lt;code&gt;nano&lt;/code&gt;.在命令提示符中,输入nano.[链接]转义反引号如果你要表示为代码的单词或短语中包含一个或多个反引号，则可以通过将单词或短语包裹在双反引号(``)中。markdown语法html预览效果使用`code`在你的markdown文件中.&lt;code&gt;使用code在你的markdown文件中.&lt;/code&gt;使用code在你的markdown文件中.[链接]代码块要创建代码块，请将代码块的每一行缩进至少四个空格或一个制表符。[代码块][代码块]渲染效果如下：[代码块][代码块]note:要创建不用缩进的代码块，请使用[链接].[链接]markdown分隔线语法[链接]示例✅要创建分隔线，请在单独一行上使用三个或多个星号(***)、破折号(---)或下划线(___)，并且不能包含其他内容。[代码块][代码块]以上三个分隔线的渲染效果看起来都一样：[链接]常见错误❌为了兼容性，请在分隔线的前后均添加空白行。✅这样做❌不要这样做trytoputablanklinebefore...---...andafterahorizontalrule.(译注:请尝试在水平分隔线前后各空一行。)如果没有空行，这一行会被当作标题。---不要这样做!note:三条连字符（---）前后必须留空行，否则它会被当成setext标题的下划线，从而把上一行文字提升为二级标题。[链接]markdown链接语法链接文本放在中括号内，链接地址放在后面的括号中，链接title可选。超链接markdown语法代码：[超链接显示名](超链接地址&quot;超链接title&quot;)对应的html代码：&lt;ahref=&quot;超链接地址&quot;title=&quot;超链接title&quot;&gt;超链接显示名&lt;/a&gt;[代码块][代码块]渲染效果如下：这是一个链接[链接]。[链接]给链接增加title链接title是当鼠标悬停在链接上时会出现的文字，这个title是可选的，它放在圆括号中链接地址后面，跟链接地址之间以空格分隔。[代码块][代码块]渲染效果如下：这是一个链接[链接]。[链接]网址和email地址使用尖括号可以很方便地把url或者email地址变成可点击的链接。[代码块][代码块]渲染效果如下：[链接][链接][链接]带格式化的链接[链接]链接,在链接语法前后增加星号。要将链接表示为代码，请在方括号中添加反引号。[代码块][代码块]渲染效果如下：ilovesupportingthe[链接].thisisthe[链接].seethesectionon[链接].[链接]引用类型链接引用样式链接是一种特殊的链接，它使url在markdown中更易于显示和阅读。参考样式链接分为两部分：与文本保持内联的部分以及存储在文件中其他位置的部分，以使文本易于阅读。[链接]链接的第一部分格式引用类型的链接的第一部分使用两组括号进行格式设置。第一组方括号包围应显示为链接的文本。第二组括号显示了一个标签，该标签用于指向您存储在文档其他位置的链接。尽管不是必需的，可以在第一组和第二组括号之间包含一个空格。第二组括号中的标签不区分大小写，可以包含字母，数字，空格或标点符号。以下示例格式对于链接的第一部分效果相同：[hobbit-hole][1][hobbit-hole][1][链接]链接的第二部分格式引用类型链接的第二部分使用以下属性设置格式：放在括号中的标签，其后紧跟一个冒号和至少一个空格（例如[label]:）。链接的url，可以选择将其括在尖括号中。链接的可选标题，可以将其括在双引号，单引号或括号中。以下示例格式对于链接的第二部分效果相同：[1]:https://en.wikipedia.org/wiki/hobbit#lifestyle[1]:https://en.wikipedia.org/wiki/hobbit#lifestyle&quot;hobbitlifestyles&quot;[1]:https://en.wikipedia.org/wiki/hobbit#lifestyle&#39;hobbitlifestyles&#39;[1]:https://en.wikipedia.org/wiki/hobbit#lifestyle(hobbitlifestyles)[1]:&lt;https://en.wikipedia.org/wiki/hobbit#lifestyle&gt;&quot;hobbitlifestyles&quot;[1]:&lt;https://en.wikipedia.org/wiki/hobbit#lifestyle&gt;&#39;hobbitlifestyles&#39;[1]:&lt;https://en.wikipedia.org/wiki/hobbit#lifestyle&gt;(hobbitlifestyles)可以将链接的第二部分放在markdown文档中的任何位置。有些人将它们放在出现的段落之后，有些人则将它们放在文档的末尾（例如尾注或脚注）。[链接]常见错误❌不同的markdown应用程序处理url中间的空格方式不一样。为了兼容性，请尽量使用%20代替空格。✅这样做❌不要这样做[link](https://www.example.com/my%20great%20page)[link](https://www.example.com/mygreatpage)[链接]markdown图片语法要添加图像，请使用感叹号(!),然后在方括号增加替代文本，图片链接放在圆括号里，括号里的链接后可以增加一个可选的图片标题文本。插入图片markdown语法代码：![图片alt](图片链接&quot;图片title&quot;)。对应的html代码：&lt;imgsrc=&quot;图片链接&quot;alt=&quot;图片alt&quot;title=&quot;图片title&quot;&gt;[代码块][代码块]渲染效果如下：[图片][链接]链接图片给图片增加链接，请将图像的markdown括在方括号中，然后将链接添加在圆括号中[代码块][代码块]渲染效果如下：[链接][链接]markdown转义字符语法要显示原本用于格式化markdown文档的字符，请在字符前面添加反斜杠字符\。[代码块][代码块]渲染效果如下：*如果没有反斜杠，这将会是一个无序列表中的项目符号。[链接]可做转义的字符以下列出的字符都可以通过使用反斜杠字符从而达到转义目的。字符名称\反斜杠&#96;反引号（另见[链接]）*星号_下划线{}花括号[]括号()圆括号#井号+加号-减号（连字符）.点!感叹号|竖线（另见[链接]）[链接]特殊字符自动转义在html文件中，有两个字符需要特殊处理：&lt;和&amp;。&lt;符号用于起始标签，&amp;符号则用于标记html实体，如果你只是想要使用这些符号，你必须要使用实体的形式，像是&amp;lt;和&amp;amp。&amp;符号其实很容易让写作网页文件的人感到困扰，如果你要打「at&amp;t」，你必须要写成「at&amp;amp;t」，还得转换网址内的&amp;符号，如果你要链接到：[代码块][代码块]你必须要把网址转成：[代码块][代码块]才能放到链接标签的href属性里。不用说也知道这很容易忘记，这也可能是html标准检查所检查到的错误中，数量最多的。markdown允许你直接使用这些符号，它帮你自动转义字符。如果你使用&amp;符号的作为html实体的一部分，那么它不会被转换，而在其它情况下，它则会被转换成&amp;amp;。所以你如果要在文件中插入一个著作权的符号，你可以这样写：[代码块][代码块]markdown将不会对这段文字做修改，但是如果你这样写：[代码块][代码块]markdown就会将它转为：[代码块][代码块]类似的状况也会发生在&lt;符号上，因为markdown支持[链接]，如果你使用&lt;符号作为html标签的分隔符，那markdown也不会对它做任何转换，但是如果你是写：[代码块][代码块]markdown将会把它转换为：[代码块][代码块]需要特别注意的是，在markdown的块级元素和内联元素中，&lt;和&amp;两个符号都会被自动转换成html实体，这项特性让你可以很容易地用markdown写html。（在html语法中，你要手动把所有的&lt;和&amp;都转换为html实体。）[链接]markdown内嵌html标签对于markdown涵盖范围之外的标签，都可以直接在文件里面用html本身。如需使用html，不需要额外标注这是html或是markdown，只需html标签添加到markdown文本中即可。[链接]行级內联标签html的行级內联标签如&lt;span&gt;、&lt;cite&gt;、&lt;del&gt;不受限制，可以在markdown的段落、列表或是标题里任意使用。依照个人习惯，甚至可以不用markdown格式，而采用html标签来格式化。例如：如果比较喜欢html的&lt;a&gt;或&lt;img&gt;标签，可以直接使用这些标签，而不用markdown提供的链接或是图片语法。当你需要更改元素的属性时（例如为文本指定颜色或更改图像的宽度），使用html标签更方便些。html行级內联标签和区块标签不同，在內联标签的范围内，markdown的语法是可以解析的。[代码块][代码块]渲染效果如下:这个字是粗体的.这个字是斜体的.[链接]区块标签区块元素──比如&lt;div&gt;、&lt;table&gt;、&lt;pre&gt;、&lt;p&gt;等标签，必须在前后加上空行，以便于内容区分。而且这些元素的开始与结尾标签，不可以用tab或是空白来缩进。markdown会自动识别这区块元素，避免在区块标签前后加上没有必要的&lt;p&gt;标签。例如，在markdown文件里加上一段html表格：[代码块][代码块]请注意，markdown语法在html区块标签中将不会被进行处理。例如，你无法在html区块内使用markdown形式的*强调*。[链接]html用法最佳实践出于安全原因，并非所有markdown应用程序都支持在markdown文档中添加html。如有疑问，请查看相应markdown应用程序的手册。某些应用程序只支持html标签的子集。对于html的块级元素&lt;div&gt;、&lt;table&gt;、&lt;pre&gt;和&lt;p&gt;，请在其前后使用空行（blanklines）与其它内容进行分隔。尽量不要使用制表符（tabs）或空格（spaces）对html标签做缩进，否则将影响格式。在html块级标签内不能使用markdown语法。例如&lt;p&gt;italicand**bold**&lt;/p&gt;将不起作用。[链接]markdown拓展语法[链接]markdown拓展语法入门johngruber的原始设计文档中概述的[链接]主要是为了应付大多数情况下的日常所需元素，但对于某些人来说还不够，这就是扩展语法的用武之地。一些个人和组织开始通过添加其他元素（例如表，代码块，语法突出显示，url自动链接和脚注）来扩展基本语法。可以通过使用基于基本markdown语法的轻量级标记语言，或通过向兼容的markdown处理器添加扩展来启用这些元素。[链接]markdown扩展语法可用性并非所有markdown应用程序都支持扩展语法元素。您需要检查您的应用程序所使用的轻量级标记语言是否支持您要使用的扩展语法元素。如果没有，那么仍然有可能在markdown处理器中启用扩展。[链接]轻量标记语言有几种轻量级标记语言是markdown的超集。它们包含gruber的基本语法，并通过添加其他元素（例如表，代码块，语法突出显示，url自动链接和脚注）在此基础上构建。许多最受欢迎的markdown应用程序使用以下轻量级标记语言之一：[链接][链接][链接][链接][链接][链接]markdown处理器有许多[链接]可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息[链接]markdown表格要添加表，请使用三个或多个连字符（---）创建每列的标题，并使用管道（|）分隔每列。您可以选择在表的任一端添加管道。[代码块][代码块]呈现的输出如下所示：语法描述标头标题段落文本单元格宽度可以变化，如下所示。呈现的输出将看起来相同。[代码块][代码块]tip:使用连字符和管道创建表可能很麻烦。为了加快该过程，请尝试使用[链接]。使用图形界面构建表，然后将生成的markdown格式的文本复制到文件中。[链接]对齐您可以通过在标题行中的连字符的左侧，右侧或两侧添加冒号（:），将列中的文本对齐到左侧，右侧或中心。[代码块][代码块]呈现的输出如下所示：语法描述测试文本标头标题这个是段落文本更多[链接]格式化表格中的文字您可以在表格中设置文本格式。例如，您可以添加链接，代码（仅反引号（`）中的单词或短语，而不是代码块）和强调。您不能添加标题，块引用，列表，水平规则，图像或html标签。[链接]在表中转义管道字符您可以使用表格的html字符代码（&amp;#124;）在表中显示竖线（|）字符。[链接]markdown围栏代码块markdown基本语法允许您通过将行缩进四个空格或一个制表符来创建代码块。如果发现不方便，请尝试使用受保护的代码块。根据markdown处理器或编辑器的不同，您将在代码块之前和之后的行上使用三个反引号（```）或三个波浪号（~~~）。[代码块][代码块][代码块][代码块]**tip:**要在代码块中显示反引号？请参阅了解如何[链接]它们。[链接]语法高亮许多markdown处理器都支持受围栏代码块的语法突出显示。使用此功能，您可以为编写代码的任何语言添加颜色突出显示。要添加语法突出显示，请在受防护的代码块之前的反引号旁边指定一种语言。[代码块][代码块][代码块][代码块]呈现的输出如下所示：这里有一个简单的脚注,[链接]还有一个更长的脚注.[^bignote][代码块][代码块][链接]markdown标题编号许多markdown处理器支持[链接]的自定义id-一些markdown处理器会自动添加它们。添加自定义id允许您直接链接到标题并使用css对其进行修改。要添加自定义标题id，请在与标题相同的行上用大括号括起该自定义id。[代码块][代码块]html看起来像这样：[代码块][代码块][链接]链接到标题id(#headid)通过创建带有数字符号（#）和自定义标题id的[链接]，可以链接到文件中具有自定义id的标题。markdownhtml预览效果[headingids](#heading-ids)&lt;ahref=&quot;#heading-ids&quot;&gt;headingids&lt;/a&gt;[链接]其他网站可以通过将自定义标题id添加到网页的完整url（例如[headingids](https://markdown.com.cn/extended-syntax/heading-ids.html#headid)）来链接到标题。[链接]markdown定义列表一些markdown处理器允许您创建术语及其对应定义的定义列表。要创建定义列表，请在第一行上键入术语。在下一行，键入一个冒号，后跟一个空格和定义。[代码块][代码块]html看起来像这样：[代码块][代码块]呈现的输出如下所示：第一术语这是第一术语的定义.第二术语这是第二术语的其中一个定义.这是第二术语的另一个定义.[链接]markdown删除线您可以通过在单词中心放置一条水平线来删除单词。结果看起来像这样。此功能使您可以指示某些单词是一个错误，要从文档中删除。若要删除单词，请在单词前后使用两个波浪号~~。[代码块][代码块]呈现的输出如下所示：世界是平坦的。我们现在知道世界是圆的。[链接]markdown任务列表语法任务列表使您可以创建带有复选框的项目列表。在支持任务列表的markdown应用程序中，复选框将显示在内容旁边。要创建任务列表，请在任务列表项之前添加破折号-和方括号[]，并在[]前面加上空格。要选择一个复选框，请在方括号[x]之间添加x。[代码块][代码块]呈现的输出如下所示：[图片][链接]markdown使用emoji表情有两种方法可以将表情符号添加到markdown文件中：将表情符号复制并粘贴到markdown格式的文本中，或者键入emojishortcodes。[链接]复制和粘贴表情符号在大多数情况下，您可以简单地从[链接]等来源复制表情符号并将其粘贴到文档中。许多markdown应用程序会自动以markdown格式的文本显示表情符号。从markdown应用程序导出的html和pdf文件应显示表情符号。tip:如果您使用的是静态网站生成器，请确保将html页面编码为utf-8。[链接]使用表情符号简码一些markdown应用程序允许您通过键入表情符号短代码来插入表情符号。这些以冒号开头和结尾，并包含表情符号的名称。[代码块][代码块]呈现的输出如下所示：去露营了！⛺很快回来。真好笑！😂note：您可以使用此[链接]，但请记住，表情符号简码因应用程序而异。有关更多信息，请参阅markdown应用程序的文档。[链接]自动网址链接许多markdown处理器会自动将url转换为链接。这意味着如果您输入[链接]]([链接][代码块][代码块]呈现的输出如下所示：[链接][链接]禁用自动url链接如果您不希望自动链接url，则可以通过将url表示为带反引号的代码来删除该链接。[代码块][代码块]呈现的输出如下所示：http://www.example.com[链接]markdown语法变通[链接]概述大多数使用markdown的人会发现，基础语法和扩展语法已能满足需求。但如果您长期使用markdown，可能会发现某些必要功能确实缺失。本文提供了一些绕过markdown限制的技巧。针对markdown官方不支持的某些功能的替代解决方案。💡重要提示：这些变通方法不能保证在所有markdown应用中生效。如需频繁使用这些技巧，建议考虑改用其他标记语言。[链接]markdown下划线markdown原生不支持下划线，可能是因为网页文本中的下划线通常表示超链接。然而，在写论文或报告时，可能需要使用下划线。一些应用（如bear和simplenote）支持文本下划线，但如果你的markdown处理器支持html，可以使用&lt;ins&gt;标签：[代码块][代码块]渲染效果：一些文字将被加下划线。[链接]markdown缩进（tab)markdown里的空格和制表符有特殊用途，比如创建换行或代码块。如果你想用tab缩进段落，可以尝试以下方法：[代码块][代码块]渲染效果:&nbsp;&nbsp;&nbsp;&nbsp;这是一个缩进的段落。[链接]markdown文字居中markdown没有文本对齐的语法，但可以使用html标签&lt;center&gt;（已废弃）或css解决：[代码块][代码块]渲染效果：这段文字居中显示。[链接]markdown文字颜色markdown不支持更改文字颜色，但html可以：[代码块][代码块]渲染效果：这段文字是红色的！这段文字是蓝色的。[链接]markdown注释markdown没有内置的注释功能，但可以使用一种非官方的hack方法：[代码块][代码块]渲染效果：这是可见的段落。这是另一个可见的段落。[链接]markdown警告markdown没有警告框功能，但可以使用引用块（&gt;）+emoji+加粗模拟：[代码块][代码块]渲染效果：:warning:警告：不要按下大红色按钮！:memo:注意：日出很美。:bulb:提示：记得珍惜生活中的小事。[链接]markdown调整图片大小markdown不能指定图片尺寸，但可以用html设定宽高：[代码块][代码块]渲染效果：图片将以200x100像素显示。[图片][链接]markdown图片标题markdown没有图片标题（caption），可以使用html的&lt;figure&gt;和&lt;figcaption&gt;：[代码块][代码块]或者使用markdown变通方法：[代码块][代码块]渲染效果：[图片]这是一张描述图片。[链接]markdown新标签打开链接markdown不能指定target&#x3d;”_blank”，但html可以：[代码块][代码块]渲染效果：[链接][链接]markdown符号（特殊字符）markdown不能直接插入特殊符号，但可以复制粘贴，或者使用html实体：[代码块][代码块]渲染效果：版权(©)—&copy;注册商标(®)—&reg;商标(™)—&trade;欧元(€)—&euro;左箭头(←)—&larr;上箭头(↑)—&uarr;右箭头(→)—&rarr;下箭头(↓)—&darr;度数(°)—&#176;圆周率(π)—&#960;[链接]markdown表格格式markdown不能直接在表格中换行或插入列表，但可以用html解决：[链接]表格内换行[代码块][代码块][链接]表格内列表[代码块][代码块]渲染效果：语法描述换行第一段。第二段。语法描述列表项目一项目二[链接]markdown目录某些markdown解析器支持自动目录生成（如markdeep），但如果不支持，可以手动创建：[代码块][代码块]渲染效果：[链接]目录[链接][链接][链接][链接][链接]markdown插入视频markdown不能直接嵌入视频，但可以使用html，或变通方式（图片+链接）点击b站的分享图标，然后选择嵌入链接，会获得如下代码：[代码块][代码块]或者[代码块][代码块]渲染效果：markdown作为轻量级标记语言，有一定的局限性，但借助html和css，可以实现许多markdown不支持的功能。希望这些技巧能帮助你更高效地使用markdown！🚀文章完整性测试标记（此内容应显示在末尾）这是一个包含多个段落和代码的例子。]]></content>
+      
+      
+      <categories>
+          
+          <category> 主题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 基础认识 </tag>
+            
+            <tag> 文章排版 </tag>
+            
+            <tag> 转载或翻译 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
